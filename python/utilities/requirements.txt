@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+scipy
+librosa
+pretty_midi
+python-osc
+mir_eval
+openpyxl
