@@ -1,0 +1,47 @@
+#N canvas 43 23 728 833 12;
+#X obj 125 315 netsend -u -b;
+#X text 224 83 Close the connection;
+#X msg 144 85 disconnect;
+#X obj 203 169 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 9400 1;
+#X obj 383 171 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 197 145 Slider1;
+#X text 374 145 Slider2;
+#X obj 126 473 oscparse;
+#X obj 128 525 list trim;
+#X obj 134 651 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 3300 1;
+#X obj 308 649 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 304 265 sliders have range [0.0 - 1.0];
+#X text 26 257 OSC CLIENT;
+#X text 14 451 OSC SERVER;
+#X text 234 315 sending to Python;
+#X text 297 417 receiving from Python;
+#X text 518 205 adding OSC address and converting to OSC binary format
+;
+#X text 352 579 routing based on OSC address;
+#X text 197 472 parsing from binary to list;
+#X text 205 524 removing list;
+#X text 131 673 Inverted Slider 1;
+#X obj 124 421 netreceive -u -b 8002;
+#X text 306 673 Logarithmic Slider 2;
+#X obj 379 205 oscformat /slider2;
+#X obj 198 201 oscformat /slider1;
+#X obj 526 695 print;
+#X text 307 12 Connect to 127.0.0.1 or "localhost". i.e. the same machine
+on port number 8001, f 22;
+#X msg 112 40 connect 127.0.0.1 8001;
+#X obj 131 578 route invslider1 logslider2;
+#X connect 2 0 0 0;
+#X connect 3 0 24 0;
+#X connect 4 0 23 0;
+#X connect 7 0 8 0;
+#X connect 8 0 28 0;
+#X connect 21 0 7 0;
+#X connect 23 0 0 0;
+#X connect 24 0 0 0;
+#X connect 27 0 0 0;
+#X connect 28 0 9 0;
+#X connect 28 1 10 0;

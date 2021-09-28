@@ -1,0 +1,24 @@
+#N canvas 35 86 540 769 12;
+#X obj 128 356 netsend -u -b;
+#X text 153 81 Close the connection;
+#X msg 73 83 disconnect;
+#X text 29 298 OSC CLIENT;
+#X text 237 356 sending to Python;
+#X text 356 241 adding OSC address and converting to OSC binary format
+;
+#X msg 41 38 connect 127.0.0.1 8001;
+#X text 236 10 Connect to 127.0.0.1 or "localhost". i.e. the same machine
+on port number 8001, f 22;
+#X msg 210 189 17;
+#X floatatom 255 190 5 0 0 0 - - -;
+#X obj 201 242 oscformat my_address;
+#X floatatom 613 90 5 0 0 0 - - -;
+#X text 205 147 values to be send - if you want to send a string \,
+not common for OSC \, you must prepend 'list';
+#X msg 308 191 list hello;
+#X connect 2 0 0 0;
+#X connect 6 0 0 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 0;
+#X connect 13 0 10 0;

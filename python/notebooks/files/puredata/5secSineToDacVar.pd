@@ -1,0 +1,16 @@
+#N canvas 253 243 653 635 12;
+#X obj 107 352 *~ 0.3;
+#X obj 136 69 loadbang;
+#X msg 103 182 \; pd quit;
+#X msg 259 121 \; pd dsp 1;
+#X obj 109 425 dac~ 1 2;
+#X obj 103 260 receive freqV;
+#X obj 105 297 osc~ 0;
+#X obj 105 131 delay 5000;
+#X connect 0 0 4 0;
+#X connect 0 0 4 1;
+#X connect 1 0 3 0;
+#X connect 1 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 7 0 2 0;
