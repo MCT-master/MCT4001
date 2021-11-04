@@ -1,0 +1,592 @@
+#N canvas 504 162 617 360 12;
+#X text 27 15 Granular synthesis 2;
+#N canvas 601 23 695 711 cloneExample 0;
+#X obj 96 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 96 51 openpanel;
+#X obj 96 130 soundfiler;
+#X floatatom 96 153 10 0 0 0 - - -;
+#X obj 178 130 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 227 527 *~;
+#X obj 227 563 dac~;
+#X obj 184 425 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 184 563 5 0 0 0 - - -;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-grain2 88200 float 2;
+#X coords 0 1 88200 -1 200 140 1 0 0;
+#X restore 307 21 graph;
+#X floatatom 354 449 5 0 0 0 - - -;
+#X obj 354 471 s grainDuration;
+#X floatatom 406 450 5 0 0 0 - - -;
+#X obj 406 493 s grainSpeed;
+#X obj 227 290 phasor~;
+#X obj 227 321 *~;
+#X obj 227 344 snapshot~;
+#X msg 227 460 next \$1;
+#X obj 138 268 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 288 metro 100;
+#X obj 227 236 expr 44100 / $f1;
+#X floatatom 242 262 10 0 0 0 - - -;
+#X text 314 262 Speed in Hz;
+#X floatatom 291 367 10 0 0 0 - - -;
+#X obj 298 342 random 200;
+#X obj 228 388 +;
+#X obj 138 312 t b b;
+#X floatatom 297 321 10 0 0 0 - - -;
+#X text 379 343 Random jitter to playback;
+#X text 281 517 The abstraction "grain" must be in externals folder
+;
+#X text 94 11 Load soundfile;
+#X text 348 234 Find speed;
+#X text 38 344 Output control from audio;
+#X text 258 388 Add random value to soundfile position;
+#X text 167 404 Volume;
+#X text 352 426 Controls inside "grain" abstraction;
+#X obj 346 613 f \$0;
+#X obj 346 637 print;
+#X obj 346 594 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 96 76 list \$0;
+#X text 388 616 To find the unique number of \$0;
+#X obj 227 498 clone grain2 16 \$0;
+#X msg 96 101 read -resize \$1 \$2-grain2;
+#X connect 0 0 1 0;
+#X connect 1 0 39 0;
+#X connect 2 0 3 0;
+#X connect 3 0 15 1;
+#X connect 3 0 20 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 5 0 6 1;
+#X connect 7 0 8 0;
+#X connect 8 0 5 1;
+#X connect 10 0 11 0;
+#X connect 12 0 13 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 23 0;
+#X connect 16 0 25 0;
+#X connect 17 0 41 0;
+#X connect 18 0 19 0;
+#X connect 19 0 26 0;
+#X connect 20 0 14 0;
+#X connect 20 0 21 0;
+#X connect 24 0 25 1;
+#X connect 25 0 17 0;
+#X connect 26 0 16 0;
+#X connect 26 1 24 0;
+#X connect 27 0 24 1;
+#X connect 36 0 37 0;
+#X connect 38 0 36 0;
+#X connect 39 0 42 0;
+#X connect 41 0 5 0;
+#X connect 42 0 2 0;
+#X restore 29 66 pd cloneExample;
+#X text 154 66 <- Uses \$0 inside and outside clone (needs the "grain2"
+abstraction);
+#N canvas 0 23 689 581 sampHoldRingMod 0;
+#X obj 243 41 key;
+#X obj 243 65 sel 32;
+#X obj 243 89 random 98;
+#X obj 243 113 + 30;
+#X obj 243 168 mtof;
+#X obj 246 142 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 4500 1;
+#X floatatom 244 226 10 0 0 0 - - -;
+#X obj 328 198 + 10;
+#X obj 244 259 phasor~;
+#X obj 328 255 phasor~;
+#X obj 186 76 adc~;
+#X obj 184 299 samphold~;
+#X obj 268 297 samphold~;
+#X obj 184 334 dac~;
+#X obj 185 239 *~;
+#X floatatom 203 209 5 0 0 0 - - -;
+#X floatatom 328 226 10 0 0 0 - - -;
+#X obj 51 120 readsf~;
+#X msg 44 59 open piano.wav;
+#X obj 76 92 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 279 116 Scale random from 30 to 127;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 4 0 7 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 16 0;
+#X connect 8 0 11 1;
+#X connect 9 0 12 1;
+#X connect 10 0 14 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 1;
+#X connect 14 0 11 0;
+#X connect 14 0 12 0;
+#X connect 15 0 14 1;
+#X connect 16 0 9 0;
+#X connect 17 0 14 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X restore 28 118 pd sampHoldRingMod;
+#N canvas 0 23 503 776 granularSynthesis 0;
+#X obj 39 43 openpanel;
+#X obj 39 87 soundfiler;
+#X obj 39 21 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array source-array 155948 float 2;
+#X coords 0 1 155948 -1 100 100 1;
+#X restore 266 14 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array grain-env 2048 float 0;
+#X coords 0 1 2047 -1 100 100 1;
+#X restore 266 129 graph;
+#X obj 248 283 * 44100;
+#X floatatom 258 264 5 0 0 0 - - -;
+#X obj 248 306 s grainpitch;
+#X obj 251 246 hsl 64 12 0.1 2 0 0 empty empty grainpitch 7 6 1 8 -262144
+-1 -1 0 1;
+#X msg 39 64 read -resize \$1 source-array;
+#X floatatom 182 264 5 0 0 0 - - -;
+#X obj 175 246 hsl 64 12 1 2000 0 0 empty empty graindur 7 6 1 8 -262144
+-1 -1 0 1;
+#X obj 172 306 s graindur;
+#X floatatom 53 216 5 0 0 0 - - -;
+#X obj 46 198 hsl 64 12 0 1 0 0 empty empty grainstart 7 6 1 8 -262144
+-1 -1 0 1;
+#X obj 57 305 s grainstart;
+#X obj 39 109 s filesize;
+#X obj 89 240 r filesize;
+#X obj 73 262 f;
+#X obj 43 239 t f b;
+#X obj 57 283 *;
+#X obj 296 465 catch~ bus;
+#X obj 297 532 dac~;
+#X obj 33 707 grainvoice;
+#X obj 40 136 loadbang;
+#N canvas 737 338 274 245 make-grain-env 0;
+#X obj 16 42 t b b;
+#X obj 16 106 f;
+#X obj 44 106 + 1;
+#X msg 54 63 0;
+#X obj 16 85 until;
+#X obj 16 127 t f f;
+#X obj 16 20 inlet;
+#X obj 16 188 tabwrite grain-env;
+#X msg 16 63 2048;
+#X obj 16 148 expr ($f1-1024)/1024;
+#X obj 16 168 expr 0.5+(cos($f1 * 3.141)/2);
+#X connect 0 0 8 0;
+#X connect 0 1 3 0;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 1;
+#X connect 3 0 1 1;
+#X connect 4 0 1 0;
+#X connect 5 0 9 0;
+#X connect 5 1 7 1;
+#X connect 6 0 0 0;
+#X connect 8 0 4 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X restore 40 157 pd make-grain-env;
+#X obj 124 659 route 0 1 2 3;
+#X obj 145 481 f;
+#X obj 173 481 + 1;
+#X obj 145 506 mod 4;
+#X obj 145 530 t f b b;
+#X obj 124 637 pack f f f;
+#X obj 145 457 metro 100;
+#X obj 145 437 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 189 617 + 1;
+#X obj 189 596 / 10000;
+#X obj 189 575 random 200;
+#X msg 33 686 \$1 \$2 1;
+#X msg 116 685 \$1 \$2 1;
+#X msg 200 685 \$1 \$2 1;
+#X msg 279 684 \$1 \$2 1;
+#X obj 156 555 random 10000;
+#X obj 321 494 rev3~ 95 90;
+#X obj 171 347 r graindur;
+#X floatatom 347 264 5 0 0 0 - - -;
+#X obj 340 246 hsl 64 12 1 2 0 0 empty empty overlap 7 6 1 8 -262144
+-1 -1 0 1;
+#X obj 203 369 r overlap;
+#X obj 203 436 /;
+#X obj 203 412 t b f;
+#X obj 337 306 s overlap;
+#X obj 171 369 / 2;
+#X obj 116 706 grainvoice;
+#X obj 200 706 grainvoice;
+#X obj 279 705 grainvoice;
+#X obj 37 37;
+#X connect 0 0 9 0;
+#X connect 1 0 16 0;
+#X connect 2 0 0 0;
+#X connect 5 0 7 0;
+#X connect 8 0 6 0;
+#X connect 8 0 5 0;
+#X connect 9 0 1 0;
+#X connect 11 0 10 0;
+#X connect 11 0 12 0;
+#X connect 14 0 13 0;
+#X connect 14 0 19 0;
+#X connect 17 0 18 1;
+#X connect 18 0 20 1;
+#X connect 19 0 20 0;
+#X connect 19 1 18 0;
+#X connect 20 0 15 0;
+#X connect 21 0 22 0;
+#X connect 21 0 22 1;
+#X connect 21 0 42 0;
+#X connect 24 0 25 0;
+#X connect 26 0 37 0;
+#X connect 26 1 38 0;
+#X connect 26 2 39 0;
+#X connect 26 3 40 0;
+#X connect 27 0 28 0;
+#X connect 27 0 29 0;
+#X connect 28 0 27 1;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 30 1 41 0;
+#X connect 30 2 36 0;
+#X connect 31 0 26 0;
+#X connect 32 0 27 0;
+#X connect 33 0 32 0;
+#X connect 34 0 31 2;
+#X connect 35 0 34 0;
+#X connect 36 0 35 0;
+#X connect 37 0 23 0;
+#X connect 38 0 51 0;
+#X connect 39 0 52 0;
+#X connect 40 0 53 0;
+#X connect 41 0 31 1;
+#X connect 42 0 22 0;
+#X connect 42 1 22 1;
+#X connect 43 0 50 0;
+#X connect 45 0 44 0;
+#X connect 45 0 49 0;
+#X connect 46 0 48 0;
+#X connect 47 0 32 1;
+#X connect 48 0 47 0;
+#X connect 48 1 47 1;
+#X connect 50 0 47 0;
+#X restore 28 153 pd granularSynthesis;
+#N canvas 0 23 495 596 grainvoice 0;
+#X obj 205 274 vline~;
+#X obj 189 485 tabread4~ source-array;
+#X obj 49 364 *~ 2048;
+#X obj 49 385 tabread4~ grain-env;
+#X obj 173 513 *~;
+#X msg 205 253 0 \, 1 \$1 0;
+#X obj 157 233 t f f;
+#X obj 157 319 / 1000;
+#X obj 189 374 *~;
+#X obj 205 314 *~;
+#X obj 221 294 r grainpitch;
+#X obj 157 341 sig~;
+#X obj 173 149 r graindur;
+#X obj 157 170 f;
+#X obj 189 419 +~;
+#X obj 205 398 r grainstart;
+#X obj 157 16 inlet;
+#X obj 157 37 t b a;
+#X obj 187 60 unpack f f f;
+#X obj 205 353 *~ 1;
+#X obj 157 213 * 1;
+#X obj 189 460 +~;
+#X obj 266 81 s \$0-mydur;
+#X obj 173 191 r \$0-mydur;
+#X obj 226 100 s \$0-mypitch;
+#X obj 187 119 s \$0-mystart;
+#X obj 205 440 r \$0-mystart;
+#X obj 228 334 r \$0-mypitch;
+#X obj 173 534 throw~ bus;
+#X connect 0 0 2 0;
+#X connect 0 0 9 0;
+#X connect 1 0 4 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 28 0;
+#X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 0;
+#X connect 7 0 11 0;
+#X connect 8 0 14 0;
+#X connect 9 0 19 0;
+#X connect 10 0 9 1;
+#X connect 11 0 8 0;
+#X connect 12 0 13 1;
+#X connect 13 0 20 0;
+#X connect 14 0 21 0;
+#X connect 15 0 14 1;
+#X connect 16 0 17 0;
+#X connect 17 0 13 0;
+#X connect 17 1 18 0;
+#X connect 18 0 25 0;
+#X connect 18 1 24 0;
+#X connect 18 2 22 0;
+#X connect 19 0 8 1;
+#X connect 20 0 6 0;
+#X connect 21 0 1 0;
+#X connect 23 0 20 1;
+#X connect 26 0 21 1;
+#X connect 27 0 19 1;
+#X restore 28 192 pd grainvoice;
+#X text 128 189 This need to be in externals folder for the patch above
+to work;
+#X text 181 153 Granular patch from Andy Farnell's "Designing sound"
+;
+#X text 172 118 Uses samphold~ to downsample signal;
+#N canvas 593 172 903 926 kreidlerGranular1 0;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array array1 531405 float 2;
+#X coords 0 1 531405 -1 200 140 1;
+#X restore 519 24 graph;
+#X obj 290 220 soundfiler;
+#X floatatom 290 246 10 0 0 0 - - -;
+#X obj 290 272 expr 44100 / $f1;
+#X obj 290 329 *~;
+#X obj 290 303 phasor~;
+#X obj 47 370 phasor~;
+#X floatatom 47 345 5 0 0 0 - - -;
+#X obj 46 512 *~ 256;
+#X obj 290 507 samphold~;
+#X obj 47 628 tabread4~ array1;
+#X obj 47 593 +~;
+#X obj 48 771 dac~;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array hanning 256 float 1;
+#A 0 0 0.000150591 0.000602275 0.00135478 0.00240764 0.00376022 0.00541174
+0.00736117 0.00960734 0.0121489 0.0149843 0.0181119 0.0215298 0.0252359
+0.0292279 0.0335035 0.0380601 0.042895 0.0480052 0.0533877 0.0590392
+0.0649563 0.0711355 0.077573 0.084265 0.0912073 0.0983959 0.105826
+0.113494 0.121395 0.129524 0.137876 0.146446 0.155229 0.16422 0.173413
+0.182803 0.192384 0.20215 0.212095 0.222214 0.2325 0.242948 0.25355
+0.264301 0.275194 0.286222 0.297379 0.308658 0.320052 0.331555 0.343159
+0.354857 0.366643 0.378509 0.390449 0.402454 0.414519 0.426634 0.438794
+0.450991 0.463218 0.475466 0.487729 0.5 0.512271 0.524534 0.536782
+0.549009 0.561205 0.573365 0.585481 0.597545 0.609551 0.62149 0.633357
+0.645143 0.656841 0.668445 0.679948 0.691342 0.702621 0.713778 0.724806
+0.735699 0.74645 0.757052 0.767499 0.777786 0.787905 0.79785 0.807616
+0.817197 0.826587 0.83578 0.844771 0.853554 0.862124 0.870476 0.878605
+0.886506 0.894174 0.901605 0.908793 0.915736 0.922428 0.928865 0.935044
+0.940961 0.946613 0.951995 0.957106 0.96194 0.966497 0.970773 0.974765
+0.978471 0.981889 0.985016 0.987852 0.990393 0.992639 0.994589 0.99624
+0.997593 0.998645 0.999398 0.999849 1 0.999849 0.999398 0.998645 0.997592
+0.996239 0.466667 0.992638 0.990392 0.987851 0.985015 0.981887 0.978469
+0.974763 0.970771 0.966495 0.961939 0.957104 0.951993 0.946611 0.940959
+0.935042 0.928863 0.922425 0.915733 0.908791 0.901602 0.894171 0.886503
+0.878602 0.870473 0.862121 0.853551 0.844768 0.835777 0.826584 0.817194
+0.807613 0.797847 0.787901 0.777782 0.767496 0.757048 0.746446 0.735695
+0.724802 0.713774 0.702617 0.691338 0.679944 0.668441 0.656837 0.645139
+0.633353 0.621486 0.609547 0.597541 0.585477 0.573361 0.561201 0.549004
+0.536778 0.52453 0.512266 0.499996 0.487725 0.475462 0.463213 0.450987
+0.43879 0.42663 0.414515 0.40245 0.390445 0.378505 0.366639 0.354853
+0.343155 0.331551 0.320048 0.308654 0.297375 0.286218 0.27519 0.264297
+0.253547 0.242944 0.232497 0.222211 0.212092 0.202146 0.19238 0.182799
+0.17341 0.164217 0.155226 0.146443 0.137873 0.129521 0.121392 0.113491
+0.105823 0.0983929 0.0912044 0.0842621 0.0775702 0.0711328 0.0649537
+0.0590367 0.0533853 0.0480029 0.0428928 0.038058 0.0335015 0.029226
+0.025234 0.0215281 0.0181104 0.0149829 0.0121476 0.00960615 0.0073601
+0.00541082 0.00375944 0.00240701 0.00135431 0.000601947 0.000150442
+;
+#X coords 0 1 256 0 40 30 1;
+#X restore 409 749 graph;
+#X text 394 766 0;
+#X text 394 743 1;
+#X text 397 782 0;
+#X text 433 782 256;
+#X obj 204 629 tabread~ hanning;
+#X obj 48 695 *~;
+#X obj 385 508 *~ 256;
+#X obj 627 515 samphold~;
+#X obj 386 624 tabread4~ array1;
+#X obj 386 589 +~;
+#X obj 543 625 tabread~ hanning;
+#X obj 387 691 *~;
+#X obj 385 457 wrap~;
+#X obj 385 429 +~ 0.5;
+#X obj 48 739 *~ 0.6;
+#X text 537 193 load sound file;
+#X text 368 246 size of sound file;
+#X text 356 303 runs at original speed;
+#X text 45 323 playback speed you want;
+#X text 104 502 window \, here 256;
+#X text 103 519 samples in size;
+#X text 448 436 phase shift;
+#X text 445 500 window \, here 256;
+#X text 444 517 samples in size;
+#X text 543 778 www.pd-tutorial.com;
+#X text 561 748 Johannes Kreidler;
+#X msg 290 190 read -resize \$1 array1;
+#X obj 290 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 290 160 openpanel;
+#X text 31 29 Kreidler based granular patch;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 1;
+#X connect 3 0 5 0;
+#X connect 4 0 9 0;
+#X connect 4 0 21 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 6 0 9 1;
+#X connect 6 0 27 0;
+#X connect 7 0 6 0;
+#X connect 8 0 11 0;
+#X connect 8 0 18 0;
+#X connect 9 0 11 1;
+#X connect 10 0 19 0;
+#X connect 11 0 10 0;
+#X connect 18 0 19 1;
+#X connect 19 0 28 0;
+#X connect 20 0 23 0;
+#X connect 20 0 24 0;
+#X connect 21 0 23 1;
+#X connect 22 0 25 0;
+#X connect 23 0 22 0;
+#X connect 24 0 25 1;
+#X connect 25 0 28 0;
+#X connect 26 0 20 0;
+#X connect 26 0 21 1;
+#X connect 27 0 26 0;
+#X connect 28 0 12 0;
+#X connect 28 0 12 1;
+#X connect 40 0 1 0;
+#X connect 41 0 42 0;
+#X connect 42 0 40 0;
+#X restore 27 233 pd kreidlerGranular1;
+#N canvas 0 23 903 790 kreidlerGranular2 0;
+#X obj 50 217 phasor~;
+#X floatatom 50 192 5 0 0 0 - - -;
+#X obj 129 341 samphold~;
+#X obj 51 667 dac~;
+#N canvas 0 23 744 528 (subpatch) 0;
+#X array hanning1 256 float 1;
+#A 0 0 0.000150591 0.000602275 0.00135478 0.00240764 0.00376022 0.00541174
+0.00736117 0.00960734 0.0121489 0.0149843 0.0181119 0.0215298 0.0252359
+0.0292279 0.0335035 0.0380601 0.042895 0.0480052 0.0533877 0.0590392
+0.0649563 0.0711355 0.077573 0.084265 0.0912073 0.0983959 0.105826
+0.113494 0.121395 0.129524 0.137876 0.146446 0.155229 0.16422 0.173413
+0.182803 0.192384 0.20215 0.212095 0.222214 0.2325 0.242948 0.25355
+0.264301 0.275194 0.286222 0.297379 0.308658 0.320052 0.331555 0.343159
+0.354857 0.366643 0.378509 0.390449 0.402454 0.414519 0.426634 0.438794
+0.450991 0.463218 0.475466 0.487729 0.5 0.512271 0.524534 0.536782
+0.549009 0.561205 0.573365 0.585481 0.597545 0.609551 0.62149 0.633357
+0.645143 0.656841 0.668445 0.679948 0.691342 0.702621 0.713778 0.724806
+0.735699 0.74645 0.757052 0.767499 0.777786 0.787905 0.79785 0.807616
+0.817197 0.826587 0.83578 0.844771 0.853554 0.862124 0.870476 0.878605
+0.886506 0.894174 0.901605 0.908793 0.915736 0.922428 0.928865 0.935044
+0.940961 0.946613 0.951995 0.957106 0.96194 0.966497 0.970773 0.974765
+0.978471 0.981889 0.985016 0.987852 0.990393 0.992639 0.994589 0.99624
+0.997593 0.998645 0.999398 0.999849 1 0.999849 0.999398 0.998645 0.997592
+0.996239 0.333333 0.992638 0.990392 0.987851 0.985015 0.981887 0.978469
+0.974763 0.970771 0.966495 0.961939 0.957104 0.951993 0.946611 0.940959
+0.935042 0.928863 0.922425 0.915733 0.908791 0.901602 0.894171 0.886503
+0.878602 0.870473 0.862121 0.853551 0.844768 0.835777 0.826584 0.817194
+0.807613 0.797847 0.787901 0.777782 0.767496 0.757048 0.746446 0.735695
+0.724802 0.713774 0.702617 0.691338 0.679944 0.668441 0.656837 0.645139
+0.633353 0.621486 0.609547 0.597541 0.585477 0.573361 0.561201 0.549004
+0.536778 0.52453 0.512266 0.499996 0.487725 0.475462 0.463213 0.450987
+0.43879 0.42663 0.414515 0.40245 0.390445 0.378505 0.366639 0.354853
+0.343155 0.331551 0.320048 0.308654 0.297375 0.286218 0.27519 0.264297
+0.253547 0.242944 0.232497 0.222211 0.212092 0.202146 0.19238 0.182799
+0.17341 0.164217 0.155226 0.146443 0.137873 0.129521 0.121392 0.113491
+0.105823 0.0983929 0.0912044 0.0842621 0.0775702 0.0711328 0.0649537
+0.0590367 0.0533853 0.0480029 0.0428928 0.038058 0.0335015 0.029226
+0.025234 0.0215281 0.0181104 0.0149829 0.0121476 0.00960615 0.0073601
+0.00541082 0.00375944 0.00240701 0.00135431 0.000601947 0.000150442
+;
+#X coords 0 1 256 0 40 30 1;
+#X restore 546 269 graph;
+#X text 531 286 0;
+#X text 531 263 1;
+#X text 534 302 0;
+#X text 570 302 256;
+#X obj 52 545 *~;
+#X obj 458 351 samphold~;
+#X obj 390 538 *~;
+#X obj 388 304 wrap~;
+#X obj 388 276 +~ 0.5;
+#X obj 51 635 *~ 0.6;
+#X obj 51 513 osc~;
+#X obj 391 508 osc~;
+#X obj 51 449 *~;
+#X obj 291 67 abs~;
+#X obj 291 39 noise~;
+#X obj 49 359 *~ 256;
+#X obj 388 355 *~ 256;
+#X floatatom 521 111 5 0 0 0 - - -;
+#X obj 52 479 +~;
+#X obj 389 451 *~;
+#X obj 390 481 +~;
+#X text 46 167 speed;
+#X text 343 37 random generator;
+#X text 495 88 Frequency window;
+#X text 22 13 Kreidler-based Granular synthesizer;
+#X obj 521 137 s freqWindow;
+#X obj 408 420 r freqWindow;
+#X obj 70 421 r freqWindow;
+#X floatatom 522 185 5 0 0 0 - - -;
+#X obj 522 208 s freqOffset;
+#X obj 420 452 r freqOffset;
+#X obj 88 449 r freqOffset;
+#X text 500 160 Frequency offset;
+#X obj 70 581 delwrite~ \$0-delLeft 2000;
+#X obj 390 575 delwrite~ \$0-delRight 2000;
+#X floatatom 306 183 5 0 0 0 - - -;
+#X floatatom 128 190 5 0 0 0 - - -;
+#X obj 306 209 delread~ \$0-delLeft 100;
+#X obj 128 216 delread~ \$0-delRight 100;
+#X obj 433 508 tabread~ hanning1;
+#X obj 89 513 tabread~ hanning1;
+#X connect 0 0 2 1;
+#X connect 0 0 13 0;
+#X connect 0 0 20 0;
+#X connect 1 0 0 0;
+#X connect 2 0 17 0;
+#X connect 9 0 14 0;
+#X connect 9 0 38 0;
+#X connect 10 0 24 0;
+#X connect 11 0 14 0;
+#X connect 11 0 39 0;
+#X connect 12 0 10 1;
+#X connect 12 0 21 0;
+#X connect 13 0 12 0;
+#X connect 14 0 3 0;
+#X connect 14 0 3 1;
+#X connect 15 0 9 0;
+#X connect 16 0 11 0;
+#X connect 17 0 23 0;
+#X connect 18 0 2 0;
+#X connect 18 0 10 0;
+#X connect 19 0 18 0;
+#X connect 20 0 45 0;
+#X connect 21 0 44 0;
+#X connect 22 0 30 0;
+#X connect 23 0 15 0;
+#X connect 24 0 25 0;
+#X connect 25 0 16 0;
+#X connect 31 0 24 1;
+#X connect 32 0 17 1;
+#X connect 33 0 34 0;
+#X connect 35 0 25 1;
+#X connect 36 0 23 1;
+#X connect 40 0 42 0;
+#X connect 41 0 43 0;
+#X connect 42 0 24 0;
+#X connect 43 0 17 0;
+#X connect 44 0 11 1;
+#X connect 45 0 9 1;
+#X restore 27 272 pd kreidlerGranular2;
+#X text 179 233 Based on a synth from Kreidler's book;
+#X text 178 271 Based on a synth from Kreidler's book;
