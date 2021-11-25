@@ -29,7 +29,7 @@ def main():
     for i in range(200):
         print(i,end=' ')
 
-    signal = sine_synth(220, 500)
+    signal = sine_synth(440, 500)
 
     plt.figure(figsize=(14, 3))
     plt.plot(signal)
