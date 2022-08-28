@@ -1,9 +1,10 @@
-#N canvas 973 649 450 300 12;
+#N canvas 1118 666 290 262 12;
 #X obj 39 84 list prepend 0;
-#X obj 39 108 route 0 1;
+#X obj 39 112 route 0 1;
 #X obj 38 150 outlet;
 #X obj 33 46 inlet;
 #X obj 126 47 inlet;
+#X obj 176 165 print;
 #X connect 0 0 1 0;
 #X connect 1 1 2 0;
 #X connect 3 0 0 0;

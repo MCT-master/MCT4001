@@ -1,36 +1,15 @@
-#N canvas 259 49 1065 931 12;
-#X floatatom 258 28 5 0 0 0 - - - 0;
-#X floatatom 374 29 5 0 0 0 Cold_value - - 0;
-#X obj 258 58 + 10;
-#X floatatom 258 97 5 0 0 0 - - - 0;
-#X text 301 59 control signal +;
-#X obj 656 508 pack f f f;
-#X floatatom 656 466 5 0 0 0 - num1 - 0;
-#X floatatom 698 467 5 0 0 0 - num2 - 0;
-#X floatatom 738 467 5 0 0 0 - - - 0;
-#X obj 656 533 send values;
-#N canvas 0 38 592 406 synthLogic 0;
-#X obj 42 164 route vca vcf vco;
-#X floatatom 41 197 5 0 0 0 - - - 0;
-#X floatatom 89 197 5 0 0 0 - - - 0;
-#X floatatom 134 197 5 0 0 0 - - - 0;
-#X msg 117 86 vcf \$1;
-#X msg 29 75 vca \$1;
-#X msg 264 84 vco \$1;
-#X obj 28 46 unpack f f f;
-#X obj 28 23 receive values;
-#X connect 0 0 1 0;
-#X connect 0 1 2 0;
-#X connect 0 2 3 0;
-#X connect 4 0 0 0;
-#X connect 5 0 0 0;
-#X connect 6 0 0 0;
-#X connect 7 0 5 0;
-#X connect 7 1 4 0;
-#X connect 7 2 6 0;
-#X connect 8 0 7 0;
-#X restore 752 533 pd synthLogic;
-#N canvas 325 -942 450 300 example 0;
+#N canvas 398 86 978 845 12;
+#X floatatom 246 10 5 0 0 0 - - - 0;
+#X floatatom 362 11 5 0 0 0 Cold_value - - 0;
+#X obj 246 40 + 10;
+#X floatatom 246 79 5 0 0 0 - - - 0;
+#X text 289 41 control signal +;
+#X obj 584 437 pack f f f;
+#X floatatom 584 395 5 0 0 0 - num1 - 0;
+#X floatatom 626 396 5 0 0 0 - num2 - 0;
+#X floatatom 666 396 5 0 0 0 - - - 0;
+#X obj 584 462 send values;
+#N canvas 325 38 450 300 example 0;
 #X obj 45 19 inlet;
 #X obj 45 99 outlet;
 #X obj 105 21 inlet;
@@ -38,21 +17,21 @@
 #X connect 0 0 3 0;
 #X connect 2 0 3 1;
 #X connect 3 0 1 0;
-#X restore 351 277 pd example;
-#X floatatom 351 253 5 0 0 0 - - - 0;
-#X floatatom 351 306 5 0 0 0 - - - 0;
-#X floatatom 417 253 5 0 0 0 - - - 0;
+#X restore 365 249 pd example;
+#X floatatom 365 225 5 0 0 0 - - - 0;
+#X floatatom 365 278 5 0 0 0 - - - 0;
+#X floatatom 431 225 5 0 0 0 - - - 0;
 #N canvas 288 38 450 300 thru 0;
 #X obj 78 15 inlet;
 #X obj 77 101 outlet;
 #X connect 0 0 1 0;
-#X restore 45 266 pd thru;
-#X text 648 307 abstraction;
-#X obj 538 406 vsl 15 128 0 127 0 0 empty slider slider 0 -9 0 10 #fcfcfc
+#X restore 30 268 pd thru;
+#X text 634 269 abstraction;
+#X obj 499 344 vsl 15 128 0 127 0 0 empty slider slider 0 -9 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X floatatom 538 542 5 0 0 0 - - - 0;
-#X obj 82 393 loadbang;
-#X msg 282 528 \; pd dsp 0;
+#X floatatom 499 480 5 0 0 0 - - - 0;
+#X obj 43 331 loadbang;
+#X msg 320 436 \; pd dsp 0;
 #N canvas 0 38 524 319 weighted_random 0;
 #X obj 48 71 metro 1000;
 #X obj 48 47 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
@@ -77,35 +56,43 @@
 #X connect 6 0 0 1;
 #X connect 7 0 8 0;
 #X connect 7 1 9 0;
-#X restore 273 829 pd weighted_random;
-#X text 177 422 \; (semicolon) broadcasts messages to named objects
+#X restore 332 777 pd weighted_random;
+#X text 138 360 \; (semicolon) broadcasts messages to named objects
 ;
-#X msg 82 420 \; slider 65 \; num1 67 \; num2 43;
-#X msg 166 528 \; pd dsp 1;
-#X text 162 506 Switch the audio processing on or off;
+#X msg 43 358 \; slider 65 \; num1 67 \; num2 43;
+#X msg 204 436 \; pd dsp 1;
+#X text 200 414 Switch the audio processing on or off;
 #N canvas 0 38 484 328 random_sequencer 0;
 #X obj 55 51 metro 1000;
 #X obj 55 24 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X floatatom 122 26 5 0 0 0 - - - 0;
-#X obj 55 75 random 5;
-#X floatatom 55 98 5 0 0 0 - - - 0;
-#X obj 55 120 select 0 1 2 3 4;
-#X obj 54 148 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 56 137 random 5;
+#X floatatom 56 183 5 0 0 0 - - - 0;
+#X obj 56 205 select 0 1 2 3 4;
+#X obj 55 233 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 76 149 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 77 234 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 99 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
-#X obj 120 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#X obj 100 235 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 142 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#X obj 121 235 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X text 121 72 Random sequencer 0-4;
-#X obj 172 152 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#X obj 143 235 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X floatatom 151 93 5 0 0 0 - - - 0;
-#X text 189 121 Last outlet is the garbage outlet;
+#X text 68 104 Random sequencer 0-4;
+#X obj 173 237 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X floatatom 152 178 5 0 0 0 - - - 0;
+#X text 190 206 Last outlet is the garbage outlet;
+#X msg 253 109 seed 42;
+#N canvas 527 589 452 159 why_42? 0;
+#X text 11 36 In Douglas Adams’s popular 1979 science-fiction novel
+The Hitchhiker’s Guide to the Galaxy \, towards the end of the book
+\, the supercomputer Deep Thought reveals that the answer to the great
+question of “life \, the universe and everything” is 42;
+#X restore 344 128 pd why_42?;
+#X text 342 109 a fact:;
 #X connect 0 0 3 0;
 #X connect 1 0 0 0;
 #X connect 2 0 0 1;
@@ -118,7 +105,8 @@
 #X connect 5 4 10 0;
 #X connect 5 5 12 0;
 #X connect 13 0 5 0;
-#X restore 58 827 pd random_sequencer;
+#X connect 15 0 3 0;
+#X restore 150 777 pd random_sequencer;
 #N canvas 617 393 561 344 route_example 0;
 #X obj 36 88 route hi hello;
 #X msg 35 47 hi 45;
@@ -137,9 +125,7 @@
 #X connect 5 0 0 0;
 #X connect 6 0 0 0;
 #X connect 7 0 2 0;
-#X restore 645 32 pd route_example;
-#X text 647 431 The subpatch "pd synthLogic" has the receive of "values"
-;
+#X restore 633 14 pd route_example;
 #N canvas 0 38 419 229 cascaded_delays 0;
 #X obj 38 18 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
@@ -164,7 +150,7 @@
 #X connect 7 0 1 0;
 #X connect 7 0 5 0;
 #X connect 9 0 4 0;
-#X restore 187 153 pd cascaded_delays;
+#X restore 175 135 pd cascaded_delays;
 #N canvas 0 38 259 175 toggle_to_select 0;
 #X obj 61 26 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
@@ -176,7 +162,7 @@
 #X connect 0 0 3 0;
 #X connect 3 0 1 0;
 #X connect 3 1 2 0;
-#X restore 374 153 pd toggle_to_select;
+#X restore 362 135 pd toggle_to_select;
 #N canvas 0 38 445 198 pipe 0;
 #X obj 75 61 pipe 500;
 #X floatatom 75 34 5 0 0 0 - - - 0;
@@ -184,11 +170,10 @@
 #X text 144 60 Delays a value by a set time;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
-#X restore 46 155 pd pipe;
-#N canvas 0 38 450 300 counter 1;
+#X restore 34 137 pd pipe;
+#N canvas 0 38 450 300 counter 0;
 #X obj 43 31 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
-#X obj 43 51 metro 1000;
 #X floatatom 110 27 5 0 0 0 - - - 0;
 #X obj 43 79 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
@@ -198,16 +183,17 @@
 #X msg 131 66 0;
 #X text 84 142 Counter. Adds 1 per tick of the clock \, 0 resets the
 counter.;
-#X connect 0 0 1 0;
-#X connect 1 0 3 0;
-#X connect 2 0 1 1;
+#X obj 43 51 metro 250;
+#X connect 0 0 8 0;
+#X connect 1 0 8 1;
+#X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 4 0 5 0;
-#X connect 4 0 6 0;
-#X connect 5 0 4 1;
-#X connect 7 0 4 1;
-#X restore 43 200 pd counter;
-#N canvas 0 38 450 300 audio_example 0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 1;
+#X connect 6 0 3 1;
+#X connect 8 0 2 0;
+#X restore 31 182 pd counter;
+#N canvas 0 38 499 300 audio_example 0;
 #X obj 50 62 osc~;
 #X obj 50 95 *~ 0.4;
 #X floatatom 49 33 5 0 0 0 - - - 0;
@@ -222,8 +208,8 @@ are control signals \, thick cords are audio signals.;
 #X connect 1 0 3 0;
 #X connect 1 0 3 1;
 #X connect 2 0 0 0;
-#X restore 60 632 pd audio_example;
-#X text 42 291 Empty subpatch to gather patch cords;
+#X restore 50 689 pd audio_example;
+#X text 28 246 Empty subpatch to gather patch cords;
 #N canvas 0 38 275 286 message_ordering 0;
 #X obj 35 22 bng 15 250 50 0 empty empty Button_to_trigger 17 7 0 10
 #fc0400 #0400fc #000000;
@@ -231,10 +217,11 @@ are control signals \, thick cords are audio signals.;
 #X msg 110 110 54;
 #X msg 35 109 500;
 #X obj 34 175 print;
-#X obj 65 50 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 84 32 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
-#X obj 66 76 t f f f;
+#X obj 113 56 t f f f;
 #X text 29 201 Message ordering/trigger;
+#X text 39 233 what if re-patch the cables with different order?;
 #X connect 0 0 1 0;
 #X connect 0 0 2 0;
 #X connect 0 0 3 0;
@@ -245,9 +232,9 @@ are control signals \, thick cords are audio signals.;
 #X connect 6 0 3 0;
 #X connect 6 1 1 0;
 #X connect 6 2 2 0;
-#X restore 48 27 pd message_ordering;
-#X text 433 278 Subpatch example;
-#N canvas 0 38 479 229 bad_example 0;
+#X restore 39 19 pd message_ordering;
+#X text 447 250 Subpatch example;
+#N canvas 0 38 405 229 bad_example 0;
 #X obj 56 78 +;
 #X floatatom 56 40 5 0 0 0 - - - 0;
 #X floatatom 56 117 5 0 0 0 - - - 0;
@@ -261,65 +248,67 @@ are control signals \, thick cords are audio signals.;
 #X connect 3 0 4 1;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
-#X restore 487 32 pd bad_example;
-#X text 540 877 Patches from MCT4001 workshop 1 \, 29 August 2022;
-#X obj 612 307 gate;
-#X floatatom 608 267 5 0 0 0 - - - 0;
-#X obj 661 269 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X restore 475 14 pd bad_example;
+#X obj 598 269 gate;
+#X floatatom 594 229 5 0 0 0 - - - 0;
+#X obj 647 231 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 607 244 Use it to gate control data;
-#X floatatom 612 331 5 0 0 0 - - - 0;
-#X text 493 620 Attack: Start from 0 \, reach 1 in \$1ms with 0ms delay
+#X text 593 206 Use it to gate control data;
+#X floatatom 598 293 5 0 0 0 - - - 0;
+#X text 485 568 Attack: Start from 0 \, reach 1 in \$1ms with 0ms delay
 Decay: Following a \$1ms delay \, go back to 0 in \$2ms;
-#X msg 319 632 0 \, 1 100 0 \, 0 250 100;
+#X msg 307 579 0 \, 1 100 0 \, 0 250 100;
 #N canvas 353 415 518 351 counter2 0;
 #X obj 41 35 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X obj 41 133 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X floatatom 101 31 5 0 0 0 - - - 0;
-#X obj 41 90 metro 125;
-#X obj 315 75 loadbang;
+#X obj 386 31 loadbang;
 #X text 351 106 click to reset;
-#X obj 215 229 mod 16;
-#X obj 152 182 moses 16;
-#X text 286 195 part the stream \; when reach 16 \, reset;
-#X obj 263 140 + 1;
-#X obj 206 141 float;
-#X floatatom 263 165 4 0 0 0 - - - 0;
-#X msg 315 106 0;
-#X floatatom 215 253 5 0 0 0 - - - 0;
-#X connect 0 0 3 0;
-#X connect 1 0 10 0;
-#X connect 2 0 3 1;
-#X connect 3 0 1 0;
-#X connect 4 0 12 0;
+#X obj 275 275 mod 16;
+#X obj 202 215 moses 16;
+#X text 118 154 part the stream \; when reach 16 \, reset;
+#X obj 345 140 + 1;
+#X obj 233 99 float;
+#X floatatom 328 184 4 0 0 0 - - - 0;
+#X msg 386 61 0;
+#X floatatom 275 299 5 0 0 0 - - - 0;
+#X floatatom 202 239 5 0 0 0 - - - 0;
+#X obj 41 90 metro 500;
+#X text 128 216 option 1:;
+#X text 200 274 option 2:;
+#X connect 0 0 14 0;
+#X connect 1 0 9 0;
+#X connect 2 0 14 1;
+#X connect 3 0 11 0;
+#X connect 5 0 12 0;
 #X connect 6 0 13 0;
-#X connect 7 1 12 0;
-#X connect 9 0 10 1;
-#X connect 9 0 11 0;
-#X connect 10 0 9 0;
-#X connect 11 0 7 0;
-#X connect 11 0 6 0;
-#X connect 12 0 10 1;
-#X restore 183 199 pd counter2;
-#X text 20 28 1a);
-#X text 218 31 1b);
-#X text 20 155 2a);
-#X text 153 153 2b);
-#X text 16 199 4a);
-#X text 154 199 4b);
-#X text 344 153 2c);
-#X text 453 33 1c);
-#X text 616 31 1d);
-#X text 14 265 5a);
-#X text 315 269 5b);
-#X text 563 280 5c);
-#X text 14 406 6a);
-#X text 608 460 6b);
-#X text 26 632 7a);
-#X text 270 630 7b);
-#X obj 427 657 vline~;
+#X connect 6 1 11 0;
+#X connect 8 0 9 1;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 10 0 5 0;
+#X connect 10 0 6 0;
+#X connect 11 0 9 1;
+#X connect 14 0 1 0;
+#X restore 171 181 pd counter2;
+#X text 11 19 1a);
+#X text 206 13 1b);
+#X text 8 137 2a);
+#X text 141 135 2b);
+#X text 4 181 4a);
+#X text 142 181 4b);
+#X text 332 135 2c);
+#X text 441 15 1c);
+#X text 604 13 1d);
+#X text 2 247 5a);
+#X text 329 241 5b);
+#X text 561 210 5c);
+#X text 5 346 6a);
+#X text 563 373 6b);
+#X text 14 575 7a);
+#X obj 419 605 vline~;
 #N canvas 0 38 450 300 audio_example2 0;
 #X obj 50 62 osc~;
 #X obj 50 134 dac~ 1 2;
@@ -336,12 +325,87 @@ are control signals \, thick cords are audio signals.;
 #X connect 7 0 1 0;
 #X connect 7 0 1 1;
 #X connect 8 0 0 0;
-#X restore 316 759 pd audio_example2;
-#X floatatom 316 731 5 0 0 0 - - - 0;
-#X msg 317 704 110;
-#X obj 315 664 loadbang;
-#X text 29 827 8a);
-#X text 241 828 8b);
+#X restore 308 707 pd audio_example2;
+#X floatatom 308 679 5 0 0 0 - - - 0;
+#X msg 53 561 110;
+#X obj 53 534 loadbang;
+#X text 20 687 7b);
+#X text 262 578 7c);
+#X obj 135 582 osc~ 50;
+#X obj 135 646 dac~;
+#X floatatom 53 598 5 0 0 0 - - - 0;
+#X obj 53 631 send fq_;
+#X obj 135 559 r fq_;
+#N canvas 0 38 592 406 synthCV 0;
+#X obj 42 164 route vca vcf vco;
+#X floatatom 41 197 5 0 0 0 - - - 0;
+#X floatatom 89 197 5 0 0 0 - - - 0;
+#X floatatom 134 197 5 0 0 0 - - - 0;
+#X msg 117 86 vcf \$1;
+#X msg 29 75 vca \$1;
+#X msg 264 84 vco \$1;
+#X obj 28 46 unpack f f f;
+#X obj 28 23 receive values;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 5 0;
+#X connect 7 1 4 0;
+#X connect 7 2 6 0;
+#X connect 8 0 7 0;
+#X restore 680 462 pd synthCV;
+#X text 589 372 The subpatch "pd synthCV" has the receive of "values"
+;
+#X text 303 556 Simple envelope;
+#X text 767 772 MCT4001 Pd Session 1 29 August 2022;
+#X obj 203 522 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#N canvas 440 502 115 202 sig 0;
+#X obj 20 16 inlet;
+#X floatatom 20 44 5 0 0 0 - - - 0;
+#X obj 20 75 / 127;
+#X floatatom 20 98 5 0 0 0 - - - 0;
+#X obj 20 126 sig~;
+#X obj 20 150 outlet~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X restore 203 658 pd sig;
+#X obj 135 613 *~;
+#X obj 307 652 r fq_;
+#X text 121 777 8b);
+#X text 300 776 8c);
+#X text 18 779 8a);
+#N canvas 469 531 280 289 rand 0;
+#X obj 43 28 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X obj 43 48 metro 500;
+#X msg 94 86 seed 42;
+#X floatatom 112 129 5 0 0 0 - - - 0;
+#X text 155 129 range;
+#X floatatom 65 204 5 0 0 0 - - - 0;
+#N canvas 855 548 485 226 seed? 0;
+#X text 29 68 A pseudorandom number generator's number sequence is
+completely determined by the seed: thus \, if a pseudorandom number
+generator is reinitialized with the same seed \, it will produce the
+same sequence of numbers. (Wikipedia);
+#X restore 140 190 pd seed?;
+#X obj 36 242 print random:;
+#X obj 43 160 random 666;
+#X msg 158 87 seed 13;
+#X connect 0 0 1 0;
+#X connect 1 0 8 0;
+#X connect 2 0 8 0;
+#X connect 3 0 8 1;
+#X connect 8 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 8 0;
+#X restore 49 778 pd rand;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 3 0;
@@ -349,16 +413,23 @@ are control signals \, thick cords are audio signals.;
 #X connect 6 0 5 0;
 #X connect 7 0 5 1;
 #X connect 8 0 5 2;
-#X connect 11 0 13 0;
-#X connect 12 0 11 0;
-#X connect 14 0 11 1;
-#X connect 17 0 18 0;
-#X connect 19 0 23 0;
-#X connect 39 0 43 0;
-#X connect 40 0 39 0;
-#X connect 41 0 39 1;
-#X connect 45 0 63 0;
-#X connect 63 0 64 1;
-#X connect 65 0 64 0;
-#X connect 66 0 65 0;
-#X connect 67 0 66 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 10 1;
+#X connect 16 0 17 0;
+#X connect 18 0 22 0;
+#X connect 36 0 40 0;
+#X connect 37 0 36 0;
+#X connect 38 0 36 1;
+#X connect 42 0 59 0;
+#X connect 59 0 60 1;
+#X connect 61 0 60 0;
+#X connect 62 0 68 0;
+#X connect 63 0 62 0;
+#X connect 66 0 77 0;
+#X connect 68 0 69 0;
+#X connect 70 0 66 0;
+#X connect 75 0 76 0;
+#X connect 76 0 77 1;
+#X connect 77 0 67 0;
+#X connect 78 0 61 0;
