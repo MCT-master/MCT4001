@@ -1,14 +1,14 @@
-#N canvas 53 47 1235 1001 12;
-#X floatatom 610 22 5 0 0 0 - - - 0;
-#X floatatom 726 23 5 0 0 0 Cold_value - - 0;
-#X obj 610 52 + 10;
-#X floatatom 610 91 5 0 0 0 - - - 0;
-#X text 653 53 control signal +;
-#X obj 49 463 pack f f f;
-#X floatatom 49 421 5 0 0 0 - num1 - 0;
-#X floatatom 91 422 5 0 0 0 - num2 - 0;
-#X floatatom 131 422 5 0 0 0 - - - 0;
-#X obj 49 488 send values;
+#N canvas 259 49 1065 931 12;
+#X floatatom 258 28 5 0 0 0 - - - 0;
+#X floatatom 374 29 5 0 0 0 Cold_value - - 0;
+#X obj 258 58 + 10;
+#X floatatom 258 97 5 0 0 0 - - - 0;
+#X text 301 59 control signal +;
+#X obj 656 508 pack f f f;
+#X floatatom 656 466 5 0 0 0 - num1 - 0;
+#X floatatom 698 467 5 0 0 0 - num2 - 0;
+#X floatatom 738 467 5 0 0 0 - - - 0;
+#X obj 656 533 send values;
 #N canvas 0 38 592 406 synthLogic 0;
 #X obj 42 164 route vca vcf vco;
 #X floatatom 41 197 5 0 0 0 - - - 0;
@@ -29,7 +29,7 @@
 #X connect 7 1 4 0;
 #X connect 7 2 6 0;
 #X connect 8 0 7 0;
-#X restore 145 488 pd synthLogic;
+#X restore 752 533 pd synthLogic;
 #N canvas 325 -942 450 300 example 0;
 #X obj 45 19 inlet;
 #X obj 45 99 outlet;
@@ -38,21 +38,21 @@
 #X connect 0 0 3 0;
 #X connect 2 0 3 1;
 #X connect 3 0 1 0;
-#X restore 70 767 pd example;
-#X floatatom 70 743 5 0 0 0 - - - 0;
-#X floatatom 70 796 5 0 0 0 - - - 0;
-#X floatatom 136 743 5 0 0 0 - - - 0;
+#X restore 351 277 pd example;
+#X floatatom 351 253 5 0 0 0 - - - 0;
+#X floatatom 351 306 5 0 0 0 - - - 0;
+#X floatatom 417 253 5 0 0 0 - - - 0;
 #N canvas 288 38 450 300 thru 0;
 #X obj 78 15 inlet;
 #X obj 77 101 outlet;
 #X connect 0 0 1 0;
-#X restore 96 301 pd thru;
-#X text 892 462 abstraction;
-#X obj 410 101 vsl 15 128 0 127 0 0 empty slider slider 0 -9 0 10 #fcfcfc
+#X restore 45 266 pd thru;
+#X text 648 307 abstraction;
+#X obj 538 406 vsl 15 128 0 127 0 0 empty slider slider 0 -9 0 10 #fcfcfc
 #000000 #000000 0 1;
-#X floatatom 410 237 5 0 0 0 - - - 0;
-#X obj 458 116 loadbang;
-#X msg 678 225 \; pd dsp 0;
+#X floatatom 538 542 5 0 0 0 - - - 0;
+#X obj 82 393 loadbang;
+#X msg 282 528 \; pd dsp 0;
 #N canvas 0 38 524 319 weighted_random 0;
 #X obj 48 71 metro 1000;
 #X obj 48 47 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
@@ -77,12 +77,12 @@
 #X connect 6 0 0 1;
 #X connect 7 0 8 0;
 #X connect 7 1 9 0;
-#X restore 200 183 pd weighted_random;
-#X text 551 149 \; (semicolon) broadcasts messages to named objects
+#X restore 273 829 pd weighted_random;
+#X text 177 422 \; (semicolon) broadcasts messages to named objects
 ;
-#X msg 458 143 \; slider 65 \; num1 67 \; num2 43;
-#X msg 562 225 \; pd dsp 1;
-#X text 558 203 Switch the audio processing on or off;
+#X msg 82 420 \; slider 65 \; num1 67 \; num2 43;
+#X msg 166 528 \; pd dsp 1;
+#X text 162 506 Switch the audio processing on or off;
 #N canvas 0 38 484 328 random_sequencer 0;
 #X obj 55 51 metro 1000;
 #X obj 55 24 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
@@ -118,7 +118,7 @@
 #X connect 5 4 10 0;
 #X connect 5 5 12 0;
 #X connect 13 0 5 0;
-#X restore 200 149 pd random_sequencer;
+#X restore 58 827 pd random_sequencer;
 #N canvas 617 393 561 344 route_example 0;
 #X obj 36 88 route hi hello;
 #X msg 35 47 hi 45;
@@ -137,8 +137,8 @@
 #X connect 5 0 0 0;
 #X connect 6 0 0 0;
 #X connect 7 0 2 0;
-#X restore 45 227 pd route_example;
-#X text 40 386 The subpatch "pd synthLogic" has the receive of "values"
+#X restore 645 32 pd route_example;
+#X text 647 431 The subpatch "pd synthLogic" has the receive of "values"
 ;
 #N canvas 0 38 419 229 cascaded_delays 0;
 #X obj 38 18 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -164,7 +164,7 @@
 #X connect 7 0 1 0;
 #X connect 7 0 5 0;
 #X connect 9 0 4 0;
-#X restore 43 185 pd cascaded_delays;
+#X restore 187 153 pd cascaded_delays;
 #N canvas 0 38 259 175 toggle_to_select 0;
 #X obj 61 26 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
@@ -176,16 +176,16 @@
 #X connect 0 0 3 0;
 #X connect 3 0 1 0;
 #X connect 3 1 2 0;
-#X restore 44 144 pd toggle_to_select;
-#N canvas 0 23 445 198 pipe 0;
+#X restore 374 153 pd toggle_to_select;
+#N canvas 0 38 445 198 pipe 0;
 #X obj 75 61 pipe 500;
 #X floatatom 75 34 5 0 0 0 - - - 0;
 #X floatatom 75 89 5 0 0 0 - - - 0;
 #X text 144 60 Delays a value by a set time;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
-#X restore 157 110 pd pipe;
-#N canvas 0 38 450 300 counter 0;
+#X restore 46 155 pd pipe;
+#N canvas 0 38 450 300 counter 1;
 #X obj 43 31 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X obj 43 51 metro 1000;
@@ -193,10 +193,10 @@
 #X obj 43 79 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X obj 43 100 f 0;
-#X obj 79 100 + 1;
-#X floatatom 42 127 5 0 0 0 - - - 0;
-#X msg 78 75 0;
-#X text 90 124 Counter. Adds 1 per tick of the clock \, 0 resets the
+#X obj 105 104 + 1;
+#X floatatom 41 166 5 0 0 0 - - - 0;
+#X msg 131 66 0;
+#X text 84 142 Counter. Adds 1 per tick of the clock \, 0 resets the
 counter.;
 #X connect 0 0 1 0;
 #X connect 1 0 3 0;
@@ -206,7 +206,7 @@ counter.;
 #X connect 4 0 6 0;
 #X connect 5 0 4 1;
 #X connect 7 0 4 1;
-#X restore 57 104 pd counter;
+#X restore 43 200 pd counter;
 #N canvas 0 38 450 300 audio_example 0;
 #X obj 50 62 osc~;
 #X obj 50 95 *~ 0.4;
@@ -222,8 +222,8 @@ are control signals \, thick cords are audio signals.;
 #X connect 1 0 3 0;
 #X connect 1 0 3 1;
 #X connect 2 0 0 0;
-#X restore 215 74 pd audio_example;
-#X text 39 322 Empty subpatch to gather patch cords;
+#X restore 60 632 pd audio_example;
+#X text 42 291 Empty subpatch to gather patch cords;
 #N canvas 0 38 275 286 message_ordering 0;
 #X obj 35 22 bng 15 250 50 0 empty empty Button_to_trigger 17 7 0 10
 #fc0400 #0400fc #000000;
@@ -245,9 +245,9 @@ are control signals \, thick cords are audio signals.;
 #X connect 6 0 3 0;
 #X connect 6 1 1 0;
 #X connect 6 2 2 0;
-#X restore 53 71 pd message_ordering;
-#X text 152 768 Subpatch example;
-#N canvas 0 23 374 229 bad_example 0;
+#X restore 48 27 pd message_ordering;
+#X text 433 278 Subpatch example;
+#N canvas 0 38 479 229 bad_example 0;
 #X obj 56 78 +;
 #X floatatom 56 40 5 0 0 0 - - - 0;
 #X floatatom 56 117 5 0 0 0 - - - 0;
@@ -261,14 +261,87 @@ are control signals \, thick cords are audio signals.;
 #X connect 3 0 4 1;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
-#X restore 214 219 pd bad_example;
-#X text 835 791 Patches from MCT4001 workshop 1 \, 29 August 2022;
-#X obj 856 462 gate;
-#X floatatom 852 422 5 0 0 0 - - - 0;
-#X obj 905 424 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X restore 487 32 pd bad_example;
+#X text 540 877 Patches from MCT4001 workshop 1 \, 29 August 2022;
+#X obj 612 307 gate;
+#X floatatom 608 267 5 0 0 0 - - - 0;
+#X obj 661 269 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X text 851 399 Use it to gate control data;
-#X floatatom 856 486 5 0 0 0 - - - 0;
+#X text 607 244 Use it to gate control data;
+#X floatatom 612 331 5 0 0 0 - - - 0;
+#X text 493 620 Attack: Start from 0 \, reach 1 in \$1ms with 0ms delay
+Decay: Following a \$1ms delay \, go back to 0 in \$2ms;
+#X msg 319 632 0 \, 1 100 0 \, 0 250 100;
+#N canvas 353 415 518 351 counter2 0;
+#X obj 41 35 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X obj 41 133 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X floatatom 101 31 5 0 0 0 - - - 0;
+#X obj 41 90 metro 125;
+#X obj 315 75 loadbang;
+#X text 351 106 click to reset;
+#X obj 215 229 mod 16;
+#X obj 152 182 moses 16;
+#X text 286 195 part the stream \; when reach 16 \, reset;
+#X obj 263 140 + 1;
+#X obj 206 141 float;
+#X floatatom 263 165 4 0 0 0 - - - 0;
+#X msg 315 106 0;
+#X floatatom 215 253 5 0 0 0 - - - 0;
+#X connect 0 0 3 0;
+#X connect 1 0 10 0;
+#X connect 2 0 3 1;
+#X connect 3 0 1 0;
+#X connect 4 0 12 0;
+#X connect 6 0 13 0;
+#X connect 7 1 12 0;
+#X connect 9 0 10 1;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 11 0 7 0;
+#X connect 11 0 6 0;
+#X connect 12 0 10 1;
+#X restore 183 199 pd counter2;
+#X text 20 28 1a);
+#X text 218 31 1b);
+#X text 20 155 2a);
+#X text 153 153 2b);
+#X text 16 199 4a);
+#X text 154 199 4b);
+#X text 344 153 2c);
+#X text 453 33 1c);
+#X text 616 31 1d);
+#X text 14 265 5a);
+#X text 315 269 5b);
+#X text 563 280 5c);
+#X text 14 406 6a);
+#X text 608 460 6b);
+#X text 26 632 7a);
+#X text 270 630 7b);
+#X obj 427 657 vline~;
+#N canvas 0 38 450 300 audio_example2 0;
+#X obj 50 62 osc~;
+#X obj 50 134 dac~ 1 2;
+#X text 91 62 cosine oscillator;
+#X text 107 95 Scale the signal;
+#X text 121 136 Send to outputs 1 and 2;
+#X text 58 179 Note the difference in patch cord thickness. Thin cords
+are control signals \, thick cords are audio signals.;
+#X obj 343 63 inlet~;
+#X obj 50 95 *~;
+#X obj 41 17 inlet;
+#X connect 0 0 7 0;
+#X connect 6 0 7 1;
+#X connect 7 0 1 0;
+#X connect 7 0 1 1;
+#X connect 8 0 0 0;
+#X restore 316 759 pd audio_example2;
+#X floatatom 316 731 5 0 0 0 - - - 0;
+#X msg 317 704 110;
+#X obj 315 664 loadbang;
+#X text 29 827 8a);
+#X text 241 828 8b);
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 3 0;
@@ -284,3 +357,8 @@ are control signals \, thick cords are audio signals.;
 #X connect 39 0 43 0;
 #X connect 40 0 39 0;
 #X connect 41 0 39 1;
+#X connect 45 0 63 0;
+#X connect 63 0 64 1;
+#X connect 65 0 64 0;
+#X connect 66 0 65 0;
+#X connect 67 0 66 0;
