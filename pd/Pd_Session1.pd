@@ -1,4 +1,4 @@
-#N canvas 252 56 1050 876 12;
+#N canvas 252 56 1031 851 12;
 #X floatatom 249 12 5 0 0 0 - - - 0;
 #X floatatom 365 13 5 0 0 0 Cold_value - - 0;
 #X obj 249 42 + 10;
@@ -170,7 +170,7 @@ question of “life \, the universe and everything” is 42;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X restore 37 139 pd pipe;
-#N canvas 197 173 1215 610 counter 0;
+#N canvas 197 173 588 235 counter 0;
 #X obj 43 31 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
 0 1;
 #X floatatom 110 27 5 0 0 0 - - - 0;
