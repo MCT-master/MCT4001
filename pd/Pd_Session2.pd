@@ -1,4 +1,4 @@
-#N canvas 527 34 1393 1003 12;
+#N canvas 335 38 1393 1003 12;
 #X text 1097 912 MCT4001 Pd Session 2 5 September 2022, f 20;
 #X floatatom 150 66 5 0 0 0 - - - 0;
 #X floatatom 48 64 5 0 0 0 - - - 0;
@@ -992,7 +992,7 @@ Hertz = cycles per second Kilohertz = hertz * 1000, f 37;
 #X connect 29 0 30 1;
 #X connect 30 0 15 0;
 #X restore 179 511 pd ADSR2;
-#N canvas 32 36 1577 978 ADSR1 1;
+#N canvas 32 38 1577 978 ADSR1 1;
 #X obj 45 200 phasor~;
 #X msg 44 133 220;
 #X obj 45 224 *~ 0.25;
@@ -1828,6 +1828,8 @@ Thus it needs 3 more samples in the table to interpolate.;
 #X obj 961 237 adc~;
 #X obj 1077 228 metro 50;
 #X floatatom 1173 226 5 0 0 0 - - - 0;
+#X text 464 709 At every particular moment \, you take a "snapshot"
+of the data..., f 67;
 #X connect 1 0 7 1;
 #X connect 2 0 7 0;
 #X connect 6 0 5 0;
