@@ -7,3 +7,4 @@ pretty_midi
 python-osc
 mir_eval
 openpyxl
+sounddevice
