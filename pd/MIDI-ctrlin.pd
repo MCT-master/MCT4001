@@ -6,7 +6,7 @@
 #X text 30 76 Ctrl val;
 #X text 88 104 Ctrl nr;
 #X text 139 139 MIDI ch;
-#N canvas 591 82 849 144 MIDI_ctrl_ins 1;
+#N canvas 591 82 849 144 MIDI_ctrl_ins 0;
 #X obj 31 67 outlet;
 #X obj 123 66 outlet;
 #X obj 209 70 outlet;

@@ -1,4 +1,4 @@
-#N canvas 1043 51 607 696 12;
+#N canvas 39 308 607 696 12;
 #X msg 25 33 listen 0;
 #X obj 25 107 netreceive -u -b;
 #X obj 25 137 oscparse;
@@ -61,6 +61,14 @@ of binary data, f 40;
 [list trim] which will strip off the "list" again and leave you the
 rest., f 37;
 #X msg 46 60 listen 6669;
+#N canvas 179 217 671 346 OSC? 1;
+#X text 131 100 Open Sound Control (OSC) is a protocol for networking
+sound synthesizers \, computers \, and other multimedia devices for
+purposes such as musical performance or show control. OSC's advantages
+include interoperability \, accuracy \, flexibility and enhanced organization
+and documentation.[1] The first specification was released in March
+2002 (Wiki);
+#X restore 404 606 pd OSC?;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 17 0;

@@ -1,4 +1,4 @@
-#N canvas 1027 53 701 548 12;
+#N canvas 941 62 701 548 12;
 #X obj 103 21 notein, f 15;
 #X floatatom 104 79 5 0 0 0 - - - 0;
 #X floatatom 155 107 5 0 0 0 - - - 0;
@@ -30,6 +30,30 @@
 #X msg 94 245 78;
 #X obj 56 333 makenote 100 1000;
 #X obj 172 373 pack f f;
+#N canvas 150 188 1005 516 MIDI? 1;
+#X text 167 113 MIDI (/ˈmɪdi/ \; Musical Instrument Digital Interface)
+is a technical standard that describes a communications protocol \,
+digital interface \, and electrical connectors that connect a wide
+variety of electronic musical instruments \, computers \, and related
+audio devices for playing \, editing \, and recording music.[1] The
+specification originates in the paper Universal Synthesizer Interface
+published by Dave Smith and Chet Wood of Sequential Circuits at the
+1981 Audio Engineering Society conference in New York City.[2] A MIDI
+recording is not an audio signal \, as with a sound recording made
+with a microphone. It is more like a piano roll \, indicating the pitch
+\, start time \, stop time and other properties of each individual
+note \, rather than the resulting sound. A single MIDI cable can carry
+up to sixteen channels of MIDI data \, each of which can be routed
+to a separate device. Each interaction with a key \, button \, knob
+or slider is converted into a MIDI event \, which specifies musical
+instructions \, such as a note's pitch \, timing and loudness. One
+common MIDI application is to play a MIDI keyboard or other controller
+and use it to trigger a digital sound module (which contains synthesized
+musical sounds) to generate sounds \, which the audience hears produced
+by a keyboard amplifier. MIDI data can be transferred via MIDI or USB
+cable \, or recorded to a sequencer or digital audio workstation to
+be edited or played back. (Wiki), f 91;
+#X restore 370 382 pd MIDI?;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
