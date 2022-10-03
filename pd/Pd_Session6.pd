@@ -1,4 +1,4 @@
-#N canvas 923 136 786 647 12;
+#N canvas 717 91 786 647 12;
 #X msg 611 498 \; pd dsp \$1;
 #X obj 611 477 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -14,8 +14,7 @@
 #X text 167 299 -----------------------------------------------------------
 ;
 #X text 589 545 MCT4001 Pd Session 6 3 October 2022, f 20;
-#N canvas 238 187 528 420 filePlayback 0;
-#X msg 66 93 open msdos.wav;
+#N canvas 256 228 528 420 filePlayback 1;
 #X obj 144 156 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X obj 150 202 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
@@ -23,7 +22,6 @@
 #X msg 97 134 print;
 #X text 184 92 File must be in path or path specified;
 #X obj 91 179 readsf~ 2, f 10;
-#X msg 183 118 open cristianBeat.wav;
 #X text 75 26 Simple fileplayback;
 #X obj 161 296 *~;
 #X obj 310 172 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
@@ -33,19 +31,21 @@
 #X obj 50 325 throw~ left;
 #X obj 151 333 throw~ right;
 #X obj 105 289 *~;
-#X connect 0 0 5 0;
-#X connect 1 0 5 0;
-#X connect 3 0 5 0;
-#X connect 5 0 14 0;
-#X connect 5 1 8 0;
-#X connect 5 2 2 0;
-#X connect 6 0 5 0;
-#X connect 8 0 13 0;
-#X connect 9 0 10 0;
-#X connect 10 0 11 0;
-#X connect 11 0 8 1;
-#X connect 11 0 14 1;
-#X connect 14 0 12 0;
+#X msg 183 118 open grains.wav;
+#X msg 57 71 open grain_beat.wav;
+#X connect 0 0 4 0;
+#X connect 2 0 4 0;
+#X connect 4 0 12 0;
+#X connect 4 1 6 0;
+#X connect 4 2 1 0;
+#X connect 6 0 11 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 1;
+#X connect 9 0 12 1;
+#X connect 12 0 10 0;
+#X connect 13 0 4 0;
+#X connect 14 0 4 0;
 #X restore 71 70 pd filePlayback;
 #N canvas 413 406 714 443 writingFile 0;
 #X msg 278 269 open testRec.wav;
@@ -6704,7 +6704,6 @@ independently Add control logic to all aspects of the patch;
 #X connect 32 1 31 0;
 #X connect 33 0 32 0;
 #X connect 34 0 40 0;
-#X connect 34 0 66 0;
 #X connect 35 0 55 0;
 #X connect 36 0 27 0;
 #X connect 37 0 42 0;
