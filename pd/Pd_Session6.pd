@@ -1,4 +1,4 @@
-#N canvas 717 91 786 647 12;
+#N canvas 590 71 1094 1000 12;
 #X msg 611 498 \; pd dsp \$1;
 #X obj 611 477 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -14,7 +14,7 @@
 #X text 167 299 -----------------------------------------------------------
 ;
 #X text 589 545 MCT4001 Pd Session 6 3 October 2022, f 20;
-#N canvas 256 228 528 420 filePlayback 1;
+#N canvas 393 192 981 808 filePlayback 1;
 #X obj 144 156 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X obj 150 202 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
@@ -32,7 +32,7 @@
 #X obj 151 333 throw~ right;
 #X obj 105 289 *~;
 #X msg 183 118 open grains.wav;
-#X msg 57 71 open grain_beat.wav;
+#X msg 57 71 open samples/grain_beat.wav;
 #X connect 0 0 4 0;
 #X connect 2 0 4 0;
 #X connect 4 0 12 0;
@@ -191,7 +191,7 @@
 #X connect 26 0 24 0;
 #X connect 27 0 2 0;
 #X restore 71 119 pd samplerArray;
-#N canvas 758 51 970 635 variSampler 0;
+#N canvas 634 170 970 635 variSampler 0;
 #X msg 101 233 range 0 \$1;
 #X obj 174 327 hsl 128 15 0 104793 0 0 empty empty End 0 -8 0 10 #fcfcfc
 #000000 #000000 0 1;
@@ -6651,7 +6651,7 @@
 #X text 240 313 Find correct playback speed;
 #X text 530 596 Suggestions: Add second phasor~ to manipulate channels
 independently Add control logic to all aspects of the patch;
-#X text 53 340 Stop \, return to 0;
+#X text 3 349 Stop \, return to 0;
 #X text 902 168 Spigot is a gate \, 0 closed \, 1 open;
 #X text 140 173 Find a file;
 #X obj 717 302 s fileOpen;
@@ -7022,7 +7022,7 @@ independently Add control logic to all aspects of the patch;
 #X text 226 235 4b);
 #N canvas 208 246 450 300 groupWork 0;
 #X text 55 99 Create a jam piece by using variSampler + keyboard;
-#X text 58 129 uou have 20m!;
+#X text 58 129 you have 20m!;
 #X restore 76 290 pd groupWork;
 #X text 48 407 7a);
 #X text 229 403 7b);
