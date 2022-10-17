@@ -1,4 +1,4 @@
-#N canvas 193 131 737 622 12;
+#N canvas 18 38 1605 1036 12;
 #X msg 555 504 \; pd dsp \$1;
 #X obj 558 481 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -23,12 +23,15 @@ Help menu.;
 #X text 61 123 1a);
 #X text 61 183 2a);
 #X text 60 241 3a);
-#N canvas 208 246 497 291 groupWork 0;
+#N canvas 208 246 497 291 groupWork 1;
+#X text 167 67 a) FEEDBACK frenzy!;
+#X text 221 112 or;
+#X text 137 166 b) Multitap/ PingPong delay fun!;
 #X restore 92 292 pd groupWork;
 #X text 39 412 Extras:;
 #X text 534 551 MCT4001 Pd Session 8 17 October 2022, f 20;
-#N canvas 540 360 657 722 delay 1;
-#X obj 154 398 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#N canvas 315 87 715 693 delay 0;
+#X obj 155 394 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 154 534 pack 0 50;
 #X obj 154 558 line~;
@@ -50,10 +53,14 @@ Help menu.;
 #X floatatom 124 260 5 0 0 0 - - - 0;
 #X text 154 210 It creates duplicates only. How to make echo?, f 29
 ;
-#X obj 384 221 *~;
 #X text 263 618 https://www.hobby-hour.com/guitar/delay_effects.php
 ;
 #X obj 124 172 delwrite~ delBuff1 2000;
+#X obj 485 143 vsl 15 128 0 1 0 0 empty empty Feedback\ gain 0 -9 0
+10 #9c00ff #000000 #000000 0 1;
+#X obj 484 283 pack 0 50;
+#X obj 484 307 line~;
+#X obj 384 221 *~;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 1;
@@ -62,14 +69,19 @@ Help menu.;
 #X connect 6 0 8 0;
 #X connect 7 0 8 0;
 #X connect 8 0 15 0;
-#X connect 8 0 20 0;
+#X connect 8 0 19 0;
 #X connect 8 1 9 0;
 #X connect 11 0 8 0;
 #X connect 12 0 15 1;
+#X connect 12 0 23 0;
 #X connect 15 0 5 0;
 #X connect 16 0 12 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 1;
+#X connect 23 0 19 0;
 #X restore 96 124 pd delay;
-#N canvas 295 320 533 581 reverb 0;
+#N canvas 265 169 649 652 reverb 0;
 #X text 17 13 http://230nsc1.phy-astr.gsu.edu/hbase/Acoustic/reverb.html#:~:text=Reverberation%20is%20the%20collection%20of
 \, sound%20intensity%20in%20the%20enclosure.;
 #X obj 39 86 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -112,7 +124,7 @@ Help menu.;
 #X connect 16 0 18 4;
 #X connect 18 0 12 0;
 #X restore 98 181 pd reverb;
-#N canvas 596 667 555 425 Dattorro 0;
+#N canvas 140 136 1318 862 Dattorro 0;
 #X obj 281 215 dattorro_plate~;
 #X obj 49 29 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
@@ -179,7 +191,7 @@ Help menu.;
 #X obj 68 36 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000;
 #X text 94 36 load file;
-#N canvas 411 436 440 177 load 0;
+#N canvas 402 345 440 177 load 0;
 #X obj 83 71 soundfiler;
 #X floatatom 83 121 10 0 0 0 - - - 0;
 #X obj 150 98 print soundfile;
@@ -191,7 +203,7 @@ Help menu.;
 #X connect 4 0 3 0;
 #X restore 68 61 pd load;
 #X text 188 181 2b);
-#N canvas 230 343 667 663 flanger 0;
+#N canvas 36 55 1428 1029 flanger 0;
 #X obj 205 256 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 205 392 pack 0 50;
@@ -266,7 +278,7 @@ Help menu.;
 #X connect 31 0 15 0;
 #X connect 34 0 12 0;
 #X restore 97 241 pd flanger;
-#N canvas 472 308 1035 678 chorus 1;
+#N canvas 65 76 1530 965 chorus 0;
 #X text 622 620 https://www.hobby-hour.com/guitar/chorus_effects.php
 ;
 #X obj 160 248 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
@@ -383,7 +395,7 @@ whereas chorus uses multiple;
 #X connect 52 0 27 0;
 #X connect 53 0 15 0;
 #X restore 226 241 pd chorus;
-#N canvas 540 360 756 543 pingpong 0;
+#N canvas 40 103 1581 968 pingpong 0;
 #X obj 152 240 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 152 376 pack 0 50;
@@ -439,7 +451,7 @@ whereas chorus uses multiple;
 #X text 187 126 1b);
 #X text 315 126 1c);
 #X text 189 242 3b);
-#N canvas 421 437 978 525 multitap 0;
+#N canvas 34 82 1563 967 multitap 0;
 #X obj 127 238 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 127 374 pack 0 50;
@@ -526,7 +538,7 @@ Do something before writing into buffers.;
 #X connect 38 0 34 0;
 #X connect 39 0 35 0;
 #X restore 350 125 pd multitap;
-#N canvas 353 378 714 795 feedback_mod 0;
+#N canvas 73 41 1492 1034 feedback_mod 0;
 #X text 386 48 Similar to "no-input mixing";
 #X obj 567 232 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
@@ -608,7 +620,7 @@ Do something before writing into buffers.;
 #X text 66 353 5) Discussion;
 #X text 66 457 6);
 #X text 65 499 7);
-#N canvas 512 284 801 518 karplus-strong 0;
+#N canvas 464 279 801 518 karplus-strong 0;
 #X obj 47 135 pluck~, f 12;
 #X floatatom 74 53 5 36 127 0 - - - 0;
 #X text 115 50 pitch;
