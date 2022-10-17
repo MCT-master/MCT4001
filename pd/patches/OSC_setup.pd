@@ -1,0 +1,109 @@
+#N canvas 466 52 1070 1006 12;
+#X msg 25 33 listen 0;
+#X obj 25 101 netreceive -u -b;
+#X obj 25 137 oscparse;
+#X msg 26 451 connect 192.168.1.100 9000;
+#X msg 50 482 disconnect;
+#X obj 34 646 netsend -u -b;
+#X obj 189 485 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 185 543 oscformat 1 volume;
+#X obj 185 570 list prepend send;
+#X obj 185 594 list trim;
+#X msg 331 481 set 1 pan;
+#X msg 329 513 set 1 volume;
+#X text 22 10 OSC receive:;
+#X text 25 429 OSC send;
+#X msg 138 74 listen 9000;
+#X text 269 55 OSC msg example: /frequency 440 or /amp 0.5 So the syntax
+= /address + msg, f 45;
+#X text 303 128 Data types: (i) Integer \, a whole number (f) Float
+\, a decimal number (s) String \, chain of character (b) Blob \, block
+of binary data, f 40;
+#X obj 24 175 list trim;
+#X obj 147 205 print OSC;
+#X listbox 240 383 10 0 0 0 - - - 0;
+#X obj 24 203 route accxyz;
+#X obj 209 263 unpack s s f, f 13;
+#X obj 239 297 pack s f;
+#X obj 239 325 list trim;
+#X listbox 296 405 10 0 0 0 - - - 0;
+#X listbox 353 381 10 0 0 0 - - - 0;
+#X listbox 410 403 10 0 0 0 - - - 0;
+#X obj 239 352 route faderA faderB faderC faderD;
+#X listbox 23 257 10 0 0 0 - - - 0;
+#X listbox 63 280 10 0 0 0 - - - 0;
+#X listbox 104 306 10 0 0 0 - - - 0;
+#X obj 63 303 s Y;
+#X obj 23 280 s X;
+#X obj 104 329 s Z;
+#X obj 240 406 s fA;
+#X obj 296 428 s fB;
+#X obj 352 425 s fC;
+#X obj 410 426 s fD;
+#X obj 23 230 unpack f f f;
+#X text 141 46 OSC port;
+#N canvas 468 386 213 223 gate 0;
+#X obj 39 84 list prepend 0;
+#X obj 39 108 route 0 1;
+#X obj 38 150 outlet;
+#X obj 33 46 inlet;
+#X obj 126 47 inlet;
+#X connect 0 0 1 0;
+#X connect 1 1 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X restore 147 179 pd gate;
+#X f 8;
+#X obj 200 157 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 327 228 To convert a list to a non-list meta-message \, use
+[list trim] which will strip off the "list" again and leave you the
+rest., f 37;
+#X msg 46 60 listen 6669;
+#N canvas 179 217 671 346 OSC? 0;
+#X text 131 100 Open Sound Control (OSC) is a protocol for networking
+sound synthesizers \, computers \, and other multimedia devices for
+purposes such as musical performance or show control. OSC's advantages
+include interoperability \, accuracy \, flexibility and enhanced organization
+and documentation.[1] The first specification was released in March
+2002 (Wiki);
+#X restore 404 606 pd OSC?;
+#X obj 357 320 print;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 17 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 5 0;
+#X connect 10 0 7 0;
+#X connect 11 0 7 0;
+#X connect 14 0 1 0;
+#X connect 17 0 20 0;
+#X connect 19 0 34 0;
+#X connect 20 0 38 0;
+#X connect 20 1 21 0;
+#X connect 21 1 22 0;
+#X connect 21 2 22 1;
+#X connect 22 0 23 0;
+#X connect 23 0 27 0;
+#X connect 23 0 45 0;
+#X connect 24 0 35 0;
+#X connect 25 0 36 0;
+#X connect 26 0 37 0;
+#X connect 27 0 19 0;
+#X connect 27 1 24 0;
+#X connect 27 2 25 0;
+#X connect 27 3 26 0;
+#X connect 28 0 32 0;
+#X connect 29 0 31 0;
+#X connect 30 0 33 0;
+#X connect 38 0 28 0;
+#X connect 38 1 29 0;
+#X connect 38 2 30 0;
+#X connect 40 0 18 0;
+#X connect 41 0 40 1;
+#X connect 43 0 1 0;

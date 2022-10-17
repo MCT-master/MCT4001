@@ -1,0 +1,683 @@
+#N canvas 18 38 1605 1036 12;
+#X msg 555 504 \; pd dsp \$1;
+#X obj 558 481 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#N canvas 1065 606 720 210 r~ 0;
+#X obj 28 164 dac~, f 17;
+#X obj 28 21 catch~ left;
+#X obj 144 23 catch~ right;
+#X text 283 94 FDN-reverb \, check "EXTRA" in List of objects from
+Help menu.;
+#X obj 199 94 rev3~ 95 55;
+#X connect 1 0 0 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 1;
+#X connect 2 0 4 1;
+#X connect 4 0 0 0;
+#X connect 4 1 0 1;
+#X restore 585 480 pd r~;
+#X text 183 283 -----------------------------------------------------------
+;
+#X text 183 301 -----------------------------------------------------------
+;
+#X text 61 123 1a);
+#X text 61 183 2a);
+#X text 60 241 3a);
+#N canvas 208 246 497 291 groupWork 1;
+#X text 167 67 a) FEEDBACK frenzy!;
+#X text 221 112 or;
+#X text 137 166 b) Multitap/ PingPong delay fun!;
+#X restore 92 292 pd groupWork;
+#X text 39 412 Extras:;
+#X text 534 551 MCT4001 Pd Session 8 17 October 2022, f 20;
+#N canvas 315 87 715 693 delay 0;
+#X obj 155 394 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 154 534 pack 0 50;
+#X obj 154 558 line~;
+#X obj 43 537 throw~ left;
+#X obj 56 559 throw~ right;
+#X obj 81 508 *~;
+#X obj 38 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 69 66 stop;
+#X obj 38 99 tabplay~ audioFile;
+#X obj 161 124 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 63 43 play;
+#X msg 112 66 10000 170000;
+#X obj 124 286 delread~ delBuff1 500;
+#X text 297 172 max buffer;
+#X text 165 263 delay time;
+#X obj 39 339 +~;
+#X floatatom 124 260 5 0 0 0 - - - 0;
+#X text 154 210 It creates duplicates only. How to make echo?, f 29
+;
+#X text 263 618 https://www.hobby-hour.com/guitar/delay_effects.php
+;
+#X obj 124 172 delwrite~ delBuff1 2000;
+#X obj 485 143 vsl 15 128 0 1 0 0 empty empty Feedback\ gain 0 -9 0
+10 #9c00ff #000000 #000000 0 1;
+#X obj 484 283 pack 0 50;
+#X obj 484 307 line~;
+#X obj 384 221 *~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 1;
+#X connect 5 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 15 0;
+#X connect 8 0 19 0;
+#X connect 8 1 9 0;
+#X connect 11 0 8 0;
+#X connect 12 0 15 1;
+#X connect 12 0 23 0;
+#X connect 15 0 5 0;
+#X connect 16 0 12 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 1;
+#X connect 23 0 19 0;
+#X restore 96 124 pd delay;
+#N canvas 265 169 649 652 reverb 0;
+#X text 17 13 http://230nsc1.phy-astr.gsu.edu/hbase/Acoustic/reverb.html#:~:text=Reverberation%20is%20the%20collection%20of
+\, sound%20intensity%20in%20the%20enclosure.;
+#X obj 39 86 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 70 107 stop;
+#X obj 39 140 tabplay~ audioFile;
+#X obj 162 165 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 64 84 play;
+#X msg 113 107 10000 170000;
+#X obj 177 356 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 177 492 pack 0 50;
+#X obj 177 516 line~;
+#X obj 45 463 throw~ left;
+#X obj 58 485 throw~ right;
+#X obj 83 434 *~;
+#X floatatom 73 200 4 0 120 0 - - - 0;
+#X floatatom 107 224 4 0 100 0 - - - 0;
+#X floatatom 141 248 6 0 0 0 - - - 0;
+#X floatatom 176 274 4 0 100 0 - - - 0;
+#X text 189 248 crossover frequency \, Hz.;
+#X obj 39 303 rev2~ 100 90 3000 20;
+#X text 140 224 liveness/feedback (in percent: 0-100;
+#X text 211 275 High Frequency damping (in percent: 0-100);
+#X text 107 199 output level dB;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 18 0;
+#X connect 3 1 4 0;
+#X connect 6 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 12 1;
+#X connect 12 0 10 0;
+#X connect 12 0 11 0;
+#X connect 13 0 18 1;
+#X connect 14 0 18 2;
+#X connect 15 0 18 3;
+#X connect 16 0 18 4;
+#X connect 18 0 12 0;
+#X restore 98 181 pd reverb;
+#N canvas 140 136 1318 862 Dattorro 0;
+#X obj 281 215 dattorro_plate~;
+#X obj 49 29 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 80 50 stop;
+#X obj 49 83 tabplay~ audioFile;
+#X obj 172 108 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 74 27 play;
+#X msg 123 50 10000 170000;
+#X obj 183 207 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 183 343 pack 0 50;
+#X obj 183 367 line~;
+#X obj 50 324 throw~ left;
+#X obj 63 346 throw~ right;
+#X obj 67 266 *~;
+#X obj 107 265 *~;
+#X floatatom 306 110 5 0 200 0 - - - 0;
+#X floatatom 332 137 5 0 1 0 - - - 0;
+#X floatatom 357 165 5 0 1 0 - - - 0;
+#X floatatom 382 189 5 0 1 0 - - - 0;
+#X text 422 188 gain;
+#X text 399 163 damping;
+#X text 376 138 bandwidth;
+#X text 350 111 predelay;
+#X obj 473 116 vsl 15 128 0 1 0 0 empty empty Rev\\\ amount 0 -9 0
+10 #9c00ff #000000 #000000 0 1;
+#X obj 474 252 pack 0 50;
+#X obj 474 276 line~;
+#X obj 281 251 *~;
+#X obj 384 248 *~;
+#X obj 313 314 throw~ left;
+#X obj 326 336 throw~ right;
+#X connect 0 0 25 0;
+#X connect 0 1 26 0;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 3 0 12 0;
+#X connect 3 0 13 0;
+#X connect 3 1 4 0;
+#X connect 6 0 3 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 12 1;
+#X connect 9 0 13 1;
+#X connect 12 0 10 0;
+#X connect 13 0 11 0;
+#X connect 14 0 0 1;
+#X connect 15 0 0 2;
+#X connect 16 0 0 3;
+#X connect 17 0 0 4;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 1;
+#X connect 24 0 26 1;
+#X connect 25 0 27 0;
+#X connect 26 0 28 0;
+#X restore 226 182 pd Dattorro reverb;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array audioFile 533342 float 2;
+#X coords 0 1 533342 -1 200 140 1 0 0;
+#X restore 489 28 graph;
+#X obj 68 36 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X text 94 36 load file;
+#N canvas 402 345 440 177 load 0;
+#X obj 83 71 soundfiler;
+#X floatatom 83 121 10 0 0 0 - - - 0;
+#X obj 150 98 print soundfile;
+#X msg 83 39 read -resize ../samples/count10-1.wav audioFile;
+#X obj 84 13 inlet;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X restore 68 61 pd load;
+#X text 188 181 2b);
+#N canvas 36 55 1428 1029 flanger 0;
+#X obj 205 256 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 205 392 pack 0 50;
+#X obj 205 416 line~;
+#X obj 94 395 throw~ left;
+#X obj 107 417 throw~ right;
+#X obj 132 366 *~;
+#X obj 70 46 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 101 67 stop;
+#X obj 70 100 tabplay~ audioFile;
+#X obj 193 125 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 95 44 play;
+#X msg 144 67 10000 170000;
+#X obj 122 188 delwrite~ flange 2000;
+#X obj 325 427 delread4~ flange;
+#X floatatom 325 59 5 0 1000 0 - - - 0;
+#X obj 325 116 expr~ ($v1 + 2) / 2;
+#X text 466 117 to unipolar;
+#X obj 429 173 hsl 65 25 1 40 0 0 empty empty Width -2 -8 0 10 #ff8300
+#000000 #000000 0 1;
+#X obj 426 205 pack 0 50;
+#X obj 426 229 line~;
+#X obj 430 271 hsl 65 25 1 5 0 0 empty empty Delay -2 -8 0 10 #00ff04
+#000000 #000000 0 1;
+#X obj 427 303 pack 0 50;
+#X obj 427 327 line~;
+#X obj 325 265 *~;
+#X obj 325 394 +~;
+#X obj 517 272 vsl 15 128 0 1 0 0 empty empty Flanger\\\ amount 0 -9
+0 10 #9c00ff #000000 #000000 0 1;
+#X obj 518 408 pack 0 50;
+#X obj 518 432 line~;
+#X obj 325 469 *~;
+#X obj 309 523 throw~ left;
+#X obj 322 545 throw~ right;
+#X obj 325 82 osc~ 2.84;
+#X text 94 615 https://en.wikipedia.org/wiki/Flanging;
+#X obj 345 499 s~ flanger_fb;
+#X obj 128 156 r~ flanger_fb;
+#X text 500 172 (spread);
+#X text 323 33 LFO;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 1;
+#X connect 5 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 0;
+#X connect 8 0 5 0;
+#X connect 8 1 9 0;
+#X connect 11 0 8 0;
+#X connect 13 0 28 0;
+#X connect 14 0 31 0;
+#X connect 15 0 23 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 23 1;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 24 1;
+#X connect 23 0 24 0;
+#X connect 24 0 13 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 1;
+#X connect 28 0 29 0;
+#X connect 28 0 30 0;
+#X connect 28 0 33 0;
+#X connect 31 0 15 0;
+#X connect 34 0 12 0;
+#X restore 97 241 pd flanger;
+#N canvas 65 76 1530 965 chorus 0;
+#X text 622 620 https://www.hobby-hour.com/guitar/chorus_effects.php
+;
+#X obj 160 248 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 160 384 pack 0 50;
+#X obj 160 408 line~;
+#X obj 49 387 throw~ left;
+#X obj 62 409 throw~ right;
+#X obj 87 358 *~;
+#X obj 49 36 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 80 57 stop;
+#X obj 49 90 tabplay~ audioFile;
+#X obj 172 115 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 74 34 play;
+#X msg 123 57 10000 170000;
+#X obj 133 183 delwrite~ chorus 2000;
+#X floatatom 457 67 5 0 1000 0 - - - 0;
+#X obj 457 124 expr~ ($v1 + 2) / 2;
+#X text 598 125 to unipolar;
+#X obj 561 181 hsl 65 25 20 60 0 0 empty empty Width -2 -8 0 10 #ff8300
+#000000 #000000 0 1;
+#X obj 558 213 pack 0 50;
+#X obj 558 237 line~;
+#X obj 562 279 hsl 65 25 5 30 0 0 empty empty Delay -2 -8 0 10 #00ff04
+#000000 #000000 0 1;
+#X obj 559 311 pack 0 50;
+#X obj 559 335 line~;
+#X obj 457 273 *~;
+#X obj 457 402 +~;
+#X obj 457 477 *~;
+#X floatatom 717 67 5 0 1000 0 - - - 0;
+#X obj 717 124 expr~ ($v1 + 2) / 2;
+#X obj 821 181 hsl 65 25 20 60 0 0 empty empty Width -2 -8 0 10 #ff8300
+#000000 #000000 0 1;
+#X obj 818 213 pack 0 50;
+#X obj 818 237 line~;
+#X obj 822 279 hsl 65 25 5 30 0 0 empty empty Delay -2 -8 0 10 #00ff04
+#000000 #000000 0 1;
+#X obj 819 311 pack 0 50;
+#X obj 819 335 line~;
+#X obj 717 273 *~;
+#X obj 717 402 +~;
+#X obj 909 280 vsl 15 128 0 1 0 0 empty empty Chorus\\\ amount 0 -9
+0 10 #9c00ff #000000 #000000 0 1;
+#X obj 910 416 pack 0 50;
+#X obj 910 440 line~;
+#X obj 717 477 *~;
+#X obj 478 507 s~ chorus_fb1;
+#X obj 148 149 r~ chorus_fb1;
+#X obj 737 507 s~ chorus_fb2;
+#X obj 250 151 r~ chorus_fb2;
+#X obj 377 519 throw~ left;
+#X obj 390 541 throw~ right;
+#X obj 638 519 throw~ left;
+#X obj 651 541 throw~ right;
+#X obj 457 435 delread4~ chorus;
+#X obj 717 435 delread4~ chorus;
+#X text 502 65 speed;
+#X text 597 159 (spread);
+#X obj 717 90 osc~ 4;
+#X obj 457 90 osc~ 3;
+#X text 50 590 Flanger uses shorter del times (1ms to 5ms) as opposed
+to chorus (5ms to 30ms) + Flanger uses one copy of the original signal
+whereas chorus uses multiple;
+#X text 454 36 LFO 1;
+#X text 712 36 LFO 2;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 1;
+#X connect 6 0 4 0;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 9 0 6 0;
+#X connect 9 1 10 0;
+#X connect 12 0 9 0;
+#X connect 14 0 53 0;
+#X connect 15 0 23 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 23 1;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 24 1;
+#X connect 23 0 24 0;
+#X connect 24 0 48 0;
+#X connect 25 0 40 0;
+#X connect 25 0 44 0;
+#X connect 25 0 45 0;
+#X connect 26 0 52 0;
+#X connect 27 0 34 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 0;
+#X connect 30 0 34 1;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 35 1;
+#X connect 34 0 35 0;
+#X connect 35 0 49 0;
+#X connect 36 0 37 0;
+#X connect 37 0 38 0;
+#X connect 38 0 39 1;
+#X connect 38 0 25 1;
+#X connect 39 0 42 0;
+#X connect 39 0 46 0;
+#X connect 39 0 47 0;
+#X connect 41 0 13 0;
+#X connect 43 0 13 0;
+#X connect 48 0 25 0;
+#X connect 49 0 39 0;
+#X connect 52 0 27 0;
+#X connect 53 0 15 0;
+#X restore 226 241 pd chorus;
+#N canvas 40 103 1581 968 pingpong 0;
+#X obj 152 240 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 152 376 pack 0 50;
+#X obj 152 400 line~;
+#X obj 41 379 throw~ left;
+#X obj 54 401 throw~ right;
+#X obj 79 350 *~;
+#X obj 38 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 69 66 stop;
+#X obj 38 99 tabplay~ audioFile;
+#X obj 161 124 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 63 43 play;
+#X msg 112 66 10000 170000;
+#X text 297 172 max buffer;
+#X floatatom 519 67 5 0 0 0 - - - 0;
+#X obj 438 117 delread~ pingpongL;
+#X obj 124 172 delwrite~ pingpongL 2000;
+#X obj 581 117 delread~ pingpongR;
+#X obj 583 214 vsl 15 128 0 1 0 0 empty empty Delay 0 -9 0 10 #9c00ff
+#000000 #000000 0 1;
+#X obj 583 350 pack 0 50;
+#X obj 583 374 line~;
+#X obj 462 352 throw~ left;
+#X obj 485 375 throw~ right;
+#X obj 475 320 *~;
+#X obj 542 315 *~;
+#X obj 474 153 delwrite~ pingpongR 1000;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 1;
+#X connect 5 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 15 0;
+#X connect 8 0 5 0;
+#X connect 8 1 9 0;
+#X connect 11 0 8 0;
+#X connect 13 0 14 0;
+#X connect 13 0 16 0;
+#X connect 14 0 22 0;
+#X connect 14 0 24 0;
+#X connect 16 0 23 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 22 1;
+#X connect 19 0 23 1;
+#X connect 22 0 20 0;
+#X connect 23 0 21 0;
+#X restore 222 126 pd pingpong;
+#X text 187 126 1b);
+#X text 315 126 1c);
+#X text 189 242 3b);
+#N canvas 34 82 1563 967 multitap 0;
+#X obj 127 238 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 127 374 pack 0 50;
+#X obj 127 398 line~;
+#X obj 16 377 throw~ left;
+#X obj 29 399 throw~ right;
+#X obj 54 348 *~;
+#X obj 55 23 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 86 44 stop;
+#X obj 55 77 tabplay~ audioFile;
+#X obj 178 102 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 80 21 play;
+#X msg 129 44 10000 170000;
+#X obj 111 167 delwrite~ multitap1 2000;
+#X obj 292 166 delwrite~ multitap2 2000;
+#X obj 580 146 delread~ multitap1;
+#X obj 768 151 delread~ multitap2;
+#X obj 657 186 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #ff0400
+#000000 #000000 0 1;
+#X obj 657 322 pack 0 50;
+#X obj 657 346 line~;
+#X obj 579 278 *~;
+#X floatatom 625 122 5 0 0 0 - - - 0;
+#X floatatom 756 123 5 0 0 0 - - - 0;
+#X text 671 121 Delay time;
+#X obj 847 189 vsl 15 128 0 1 0 0 empty empty Feedback 0 -9 0 10 #ff0400
+#000000 #000000 0 1;
+#X obj 847 325 pack 0 50;
+#X obj 847 349 line~;
+#X obj 770 282 *~;
+#X obj 570 310 s~ fb1;
+#X obj 761 312 s~ fb2;
+#X obj 117 141 r~ fb1;
+#X obj 297 137 r~ fb2;
+#X obj 358 302 hsl 128 15 0 1 0 0 empty empty EFX\\\ vol -2 -8 0 10
+#e3c6ff #000000 #000000 0 1;
+#X obj 393 333 pack 0 50;
+#X obj 393 357 line~;
+#X obj 305 398 *~;
+#X obj 360 398 *~;
+#X obj 261 437 throw~ left;
+#X obj 365 435 throw~ right;
+#X obj 247 337 r~ fb1;
+#X obj 313 335 r~ fb2;
+#X text 530 409 QUESTION: How to turn this into Multiband delay? Hint:
+Do something before writing into buffers.;
+#X text 352 32 MultiTap Delay allows you to create and edit taps manually
+;
+#X text 528 462 IMPROVE: Add tap-tempo using the space bar.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 1;
+#X connect 5 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 12 0;
+#X connect 8 0 13 0;
+#X connect 8 0 5 0;
+#X connect 8 1 9 0;
+#X connect 11 0 8 0;
+#X connect 14 0 19 0;
+#X connect 15 0 26 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 1;
+#X connect 19 0 27 0;
+#X connect 20 0 14 0;
+#X connect 21 0 15 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 1;
+#X connect 26 0 28 0;
+#X connect 29 0 12 0;
+#X connect 30 0 13 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 35 1;
+#X connect 33 0 34 1;
+#X connect 34 0 36 0;
+#X connect 35 0 37 0;
+#X connect 38 0 34 0;
+#X connect 39 0 35 0;
+#X restore 350 125 pd multitap;
+#N canvas 73 41 1492 1034 feedback_mod 0;
+#X text 386 48 Similar to "no-input mixing";
+#X obj 567 232 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 567 369 pack 0 50;
+#X obj 567 393 line~;
+#X obj 77 656 throw~ left;
+#X obj 90 678 throw~ right;
+#X obj 121 595 *~;
+#X obj 66 53 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 97 74 stop;
+#X obj 66 107 tabplay~ audioFile;
+#X obj 189 132 bng 10 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#ff0400 #ff0400;
+#X text 91 51 play;
+#X msg 140 74 10000 170000;
+#X obj 219 125 vsl 25 65 0 1 0 0 empty empty Input\\\ gain 0 -9 0 10
+#ff8300 #000000 #000000 0 1;
+#X obj 219 201 pack 0 50;
+#X obj 219 225 line~;
+#X obj 68 269 *~;
+#X obj 29 411 delwrite~ feedback 5000;
+#X obj 329 218 vsl 25 65 5 1000 0 0 empty empty Delay\\\ time 0 -9
+0 10 #00ff04 #000000 #000000 0 1;
+#X obj 408 259 vsl 25 65 0 2 0 0 empty empty Feedback\\\ gain 0 -9
+0 10 #ff0400 #000000 #000000 0 1;
+#X obj 245 398 *~;
+#X obj 409 339 pack 0 50;
+#X obj 409 363 line~;
+#X floatatom 329 291 5 0 0 0 - - - 0;
+#X obj 245 339 delread~ feedback;
+#X obj 97 170 adc~;
+#X floatatom 438 314 5 0 0 0 - - - 0;
+#X obj 405 586 vcf~;
+#X obj 417 540 sig~;
+#X floatatom 417 509 5 0 0 0 - - - 0;
+#X floatatom 454 546 5 0 0 0 - - - 0;
+#X text 498 545 Q;
+#X text 462 509 resonant frequency in Hz;
+#X obj 122 563 lop~;
+#X floatatom 146 537 5 0 0 0 - - - 0;
+#X msg 193 537 5000;
+#X obj 193 509 loadbang;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 1;
+#X connect 6 0 4 0;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 16 0;
+#X connect 9 1 10 0;
+#X connect 12 0 9 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 1;
+#X connect 16 0 17 0;
+#X connect 16 0 33 0;
+#X connect 18 0 23 0;
+#X connect 19 0 21 0;
+#X connect 19 0 26 0;
+#X connect 20 0 27 0;
+#X connect 20 0 33 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 1;
+#X connect 23 0 24 0;
+#X connect 24 0 20 0;
+#X connect 25 0 16 0;
+#X connect 27 0 17 0;
+#X connect 28 0 27 1;
+#X connect 29 0 28 0;
+#X connect 30 0 27 2;
+#X connect 33 0 6 0;
+#X connect 34 0 33 1;
+#X connect 35 0 34 0;
+#X connect 36 0 35 0;
+#X restore 94 458 pd feedback_mod;
+#X text 64 293 4);
+#X text 66 353 5) Discussion;
+#X text 66 457 6);
+#X text 65 499 7);
+#N canvas 464 279 801 518 karplus-strong 0;
+#X obj 47 135 pluck~, f 12;
+#X floatatom 74 53 5 36 127 0 - - - 0;
+#X text 115 50 pitch;
+#X floatatom 82 75 5 20 10000 0 - - - 0;
+#X floatatom 92 95 5 0 1 0 - - - 0;
+#X text 123 73 cutoff;
+#X text 130 96 decay;
+#X obj 177 387 *~;
+#X obj 283 258 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 283 394 pack 0 50;
+#X obj 283 418 line~;
+#X obj 66 416 throw~ left;
+#X obj 167 424 throw~ right;
+#X obj 261 74 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array ks 100 float 1;
+#A 0 -1 -0.991671 -0.983291 -0.974883 -0.966424 -0.957912 -0.949348
+-0.940757 -0.932115 -0.923419 -0.914698 -0.90595 -0.897124 -0.888272
+-0.879393 -0.870436 -0.861479 -0.85247 -0.843434 -0.834346 -0.825232
+-0.816065 -0.806899 -0.79768 -0.788434 -0.779163 -0.769839 -0.760489
+-0.751113 -0.741685 -0.732256 -0.722801 -0.71332 -0.703839 -0.694306
+-0.684721 -0.675135 -0.665523 -0.655885 -0.646273 -0.636583 -0.626892
+-0.617176 -0.607459 -0.597716 -0.587947 -0.578152 -0.568357 -0.558535
+-0.548714 -0.538866 -0.529019 -0.519145 -0.509271 -0.499371 -0.489471
+-0.479572 -0.469645 -0.459719 -0.449767 -0.439815 -0.429862 -0.41991
+-0.409931 -0.399953 -0.389974 -0.380022 -0.370043 -0.360065 -0.350086
+-0.340082 -0.330129 -0.320125 -0.310172 -0.300194 -0.290215 -0.280237
+-0.270284 -0.260332 -0.25038 -0.240401 -0.230475 -0.220523 -0.210623
+-0.200697 -0.190771 -0.180871 -0.170971 -0.161071 -0.151223 -0.141349
+-0.131502 -0.12168 -0.111859 -0.10209 -0.0922948 -0.082552 -0.0728092
+-0.0630664 -0.0533759;
+#X coords 0 2 99 -2 200 140 1 0 0;
+#X restore 492 39 graph;
+#X obj 25 79 bng 31 250 50 0 empty empty empty 17 7 0 10 #c6ffc7 #000000
+#000000;
+#X obj 174 175 tabwrite~ ks;
+#X obj 261 94 metro 20;
+#X obj 114 163 *~ 0.6;
+#X msg 591 226 \; ks normalize 1;
+#X obj 592 199 loadbang;
+#X connect 0 0 7 0;
+#X connect 0 0 18 0;
+#X connect 1 0 0 1;
+#X connect 3 0 0 2;
+#X connect 4 0 0 3;
+#X connect 7 0 12 0;
+#X connect 7 0 11 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 1;
+#X connect 13 0 17 0;
+#X connect 15 0 0 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 20 0 19 0;
+#X restore 94 497 pd karplus-strong;
+#X connect 1 0 0 0;
+#X connect 15 0 17 0;

@@ -163,3 +163,4 @@ cython_debug/
 .DS_Store
 Pd_tests.pd
 spectrogram~.pd
+PythonSession7_edt.ipynb

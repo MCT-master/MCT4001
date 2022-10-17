@@ -1,0 +1,20 @@
+#N canvas 555 119 662 360 12;
+#X obj 219 42 inlet~ delay;
+#X obj 219 74 delread4~ \$0-comb \$1;
+#X obj 45 211 delwrite~ \$0-comb 100;
+#X obj 62 116 *~ \$2;
+#X obj 62 140 lop~ 3000;
+#X obj 44 174 +~;
+#X obj 43 39 inlet~ signal;
+#X obj 220 212 outlet~;
+#X text 23 247 From: Farnell \, A. (2010) "Designing sound";
+#X text 328 126 Comb filtering occurs when a sound adds to itself within
+a short time interval. This interval typically ranges from less than
+one ms to approximately 25 ms., f 43;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 5 0 2 0;
+#X connect 6 0 5 0;
