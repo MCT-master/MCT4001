@@ -1,4 +1,4 @@
-#N canvas 498 163 737 622 12;
+#N canvas 193 131 737 622 12;
 #X msg 555 504 \; pd dsp \$1;
 #X obj 558 481 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -27,7 +27,7 @@ Help menu.;
 #X restore 92 292 pd groupWork;
 #X text 39 412 Extras:;
 #X text 534 551 MCT4001 Pd Session 8 17 October 2022, f 20;
-#N canvas 540 360 657 722 delay 0;
+#N canvas 540 360 657 722 delay 1;
 #X obj 154 398 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 154 534 pack 0 50;
@@ -234,6 +234,7 @@ Help menu.;
 #X obj 345 499 s~ flanger_fb;
 #X obj 128 156 r~ flanger_fb;
 #X text 500 172 (spread);
+#X text 323 33 LFO;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 1;
@@ -265,8 +266,8 @@ Help menu.;
 #X connect 31 0 15 0;
 #X connect 34 0 12 0;
 #X restore 97 241 pd flanger;
-#N canvas 472 308 1035 678 chorus 0;
-#X text 66 622 https://www.hobby-hour.com/guitar/chorus_effects.php
+#N canvas 472 308 1035 678 chorus 1;
+#X text 622 620 https://www.hobby-hour.com/guitar/chorus_effects.php
 ;
 #X obj 160 248 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
@@ -329,6 +330,11 @@ Help menu.;
 #X text 597 159 (spread);
 #X obj 717 90 osc~ 4;
 #X obj 457 90 osc~ 3;
+#X text 50 590 Flanger uses shorter del times (1ms to 5ms) as opposed
+to chorus (5ms to 30ms) + Flanger uses one copy of the original signal
+whereas chorus uses multiple;
+#X text 454 36 LFO 1;
+#X text 712 36 LFO 2;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 6 1;
@@ -433,7 +439,7 @@ Help menu.;
 #X text 187 126 1b);
 #X text 315 126 1c);
 #X text 189 242 3b);
-#N canvas 487 569 978 525 multitap 0;
+#N canvas 421 437 978 525 multitap 0;
 #X obj 127 238 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
 #000000 #000000 0 1;
 #X obj 127 374 pack 0 50;
@@ -543,10 +549,10 @@ Do something before writing into buffers.;
 #X obj 219 225 line~;
 #X obj 68 269 *~;
 #X obj 29 411 delwrite~ feedback 5000;
-#X obj 329 218 vsl 25 65 5 1000 0 0 empty empty Delay\ time 0 -9 0
-10 #00ff04 #000000 #000000 0 1;
-#X obj 408 259 vsl 25 65 0 2 0 0 empty empty Feedback\ gain 0 -9 0
-10 #ff0400 #000000 #000000 0 1;
+#X obj 329 218 vsl 25 65 5 1000 0 0 empty empty Delay\\\ time 0 -9
+0 10 #00ff04 #000000 #000000 0 1;
+#X obj 408 259 vsl 25 65 0 2 0 0 empty empty Feedback\\\ gain 0 -9
+0 10 #ff0400 #000000 #000000 0 1;
 #X obj 245 398 *~;
 #X obj 409 339 pack 0 50;
 #X obj 409 363 line~;
@@ -601,5 +607,65 @@ Do something before writing into buffers.;
 #X text 64 293 4);
 #X text 66 353 5) Discussion;
 #X text 66 457 6);
+#X text 65 499 7);
+#N canvas 512 284 801 518 karplus-strong 0;
+#X obj 47 135 pluck~, f 12;
+#X floatatom 74 53 5 36 127 0 - - - 0;
+#X text 115 50 pitch;
+#X floatatom 82 75 5 20 10000 0 - - - 0;
+#X floatatom 92 95 5 0 1 0 - - - 0;
+#X text 123 73 cutoff;
+#X text 130 96 decay;
+#X obj 177 387 *~;
+#X obj 283 258 vsl 15 128 0 1 0 0 empty empty Volume 0 -9 0 10 #00f8fc
+#000000 #000000 0 1;
+#X obj 283 394 pack 0 50;
+#X obj 283 418 line~;
+#X obj 66 416 throw~ left;
+#X obj 167 424 throw~ right;
+#X obj 261 74 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array ks 100 float 1;
+#A 0 -1 -0.991671 -0.983291 -0.974883 -0.966424 -0.957912 -0.949348
+-0.940757 -0.932115 -0.923419 -0.914698 -0.90595 -0.897124 -0.888272
+-0.879393 -0.870436 -0.861479 -0.85247 -0.843434 -0.834346 -0.825232
+-0.816065 -0.806899 -0.79768 -0.788434 -0.779163 -0.769839 -0.760489
+-0.751113 -0.741685 -0.732256 -0.722801 -0.71332 -0.703839 -0.694306
+-0.684721 -0.675135 -0.665523 -0.655885 -0.646273 -0.636583 -0.626892
+-0.617176 -0.607459 -0.597716 -0.587947 -0.578152 -0.568357 -0.558535
+-0.548714 -0.538866 -0.529019 -0.519145 -0.509271 -0.499371 -0.489471
+-0.479572 -0.469645 -0.459719 -0.449767 -0.439815 -0.429862 -0.41991
+-0.409931 -0.399953 -0.389974 -0.380022 -0.370043 -0.360065 -0.350086
+-0.340082 -0.330129 -0.320125 -0.310172 -0.300194 -0.290215 -0.280237
+-0.270284 -0.260332 -0.25038 -0.240401 -0.230475 -0.220523 -0.210623
+-0.200697 -0.190771 -0.180871 -0.170971 -0.161071 -0.151223 -0.141349
+-0.131502 -0.12168 -0.111859 -0.10209 -0.0922948 -0.082552 -0.0728092
+-0.0630664 -0.0533759;
+#X coords 0 2 99 -2 200 140 1 0 0;
+#X restore 492 39 graph;
+#X obj 25 79 bng 31 250 50 0 empty empty empty 17 7 0 10 #c6ffc7 #000000
+#000000;
+#X obj 174 175 tabwrite~ ks;
+#X obj 261 94 metro 20;
+#X obj 114 163 *~ 0.6;
+#X msg 591 226 \; ks normalize 1;
+#X obj 592 199 loadbang;
+#X connect 0 0 7 0;
+#X connect 0 0 18 0;
+#X connect 1 0 0 1;
+#X connect 3 0 0 2;
+#X connect 4 0 0 3;
+#X connect 7 0 12 0;
+#X connect 7 0 11 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 1;
+#X connect 13 0 17 0;
+#X connect 15 0 0 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 20 0 19 0;
+#X restore 94 497 pd karplus-strong;
 #X connect 1 0 0 0;
 #X connect 15 0 17 0;
