@@ -1,20 +1,20 @@
-#N canvas 18 38 770 556 12;
+#N canvas 32 64 770 556 12;
 #X msg 551 365 \; pd dsp \$1;
 #X obj 554 342 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#N canvas 1065 606 720 210 r~ 0;
+#N canvas 1008 606 720 210 r~ 0;
 #X obj 28 164 dac~, f 17;
-#X obj 28 21 catch~ left;
-#X obj 144 23 catch~ right;
 #X text 283 94 FDN-reverb \, check "EXTRA" in List of objects from
 Help menu.;
 #X obj 199 94 rev3~ 95 55;
-#X connect 1 0 0 0;
-#X connect 1 0 4 0;
-#X connect 2 0 0 1;
-#X connect 2 0 4 1;
-#X connect 4 0 0 0;
-#X connect 4 1 0 1;
+#X obj 28 21 catch~ l;
+#X obj 144 23 catch~ r;
+#X connect 2 0 0 0;
+#X connect 2 1 0 1;
+#X connect 3 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 0 1;
+#X connect 4 0 2 1;
 #X restore 581 341 pd r~;
 #X text 198 161 -----------------------------------------------------------
 ;
@@ -27,6 +27,31 @@ Help menu.;
 #X text 79 171 2);
 #X text 81 231 3) Discussion;
 #X text 82 114 1);
-#N canvas 382 39 450 300 live_code 0;
+#N canvas 29 240 748 829 live_code 1;
+#X obj 117 77 osc~ 80;
+#X obj 118 154 *~;
+#X obj 235 40 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 235 176 5 0 0 0 - - - 0;
+#X obj 235 199 pack 0 50;
+#X obj 235 223 line~;
+#X obj 124 340 +~;
+#X obj 124 393 expr~ tanh($v1);
+#X obj 315 256 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X floatatom 315 392 5 0 0 0 - - - 0;
+#X obj 172 467 throw~ r;
+#X obj 84 431 throw~ l;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 1;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 1;
 #X restore 106 114 pd live_code;
 #X connect 1 0 0 0;
