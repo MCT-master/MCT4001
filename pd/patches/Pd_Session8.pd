@@ -1,4 +1,4 @@
-#N canvas 18 38 1605 1036 12;
+#N canvas 18 38 787 704 12;
 #X msg 555 504 \; pd dsp \$1;
 #X obj 558 481 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -23,7 +23,7 @@ Help menu.;
 #X text 61 123 1a);
 #X text 61 183 2a);
 #X text 60 241 3a);
-#N canvas 208 246 497 291 groupWork 1;
+#N canvas 208 246 497 291 groupWork 0;
 #X text 167 67 a) FEEDBACK frenzy!;
 #X text 221 112 or;
 #X text 137 166 b) Multitap/ PingPong delay fun!;
@@ -56,8 +56,8 @@ Help menu.;
 #X text 263 618 https://www.hobby-hour.com/guitar/delay_effects.php
 ;
 #X obj 124 172 delwrite~ delBuff1 2000;
-#X obj 485 143 vsl 15 128 0 1 0 0 empty empty Feedback\ gain 0 -9 0
-10 #9c00ff #000000 #000000 0 1;
+#X obj 485 143 vsl 15 128 0 1 0 0 empty empty Feedback\\\ gain 0 -9
+0 10 #9c00ff #000000 #000000 0 1;
 #X obj 484 283 pack 0 50;
 #X obj 484 307 line~;
 #X obj 384 221 *~;
