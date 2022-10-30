@@ -1,0 +1,91 @@
+#N canvas 827 239 527 327 12;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X text 0 0 plugdatainfo <?xml version="1.0" encoding="UTF-8"?> <PlugDataInfo/>
+;
+#X coords 0 1 100 -1 1 1 1;
+#X restore 0 0 graph;
+#X obj 56 155 osc~ 110;
+#X obj 127 182 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 56 221 *~, f 7;
+#X obj 148 207 nbx 4 21 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#e4e4e4 #5a5a5a #5a5a5a 0 256;
+#X obj 59 287 dac~;
+#X text 1006 920 MCT4001 Pd Session 10 \, 31 October 2022;
+#X obj 588 396 adc~;
+#X obj 616 666 delwrite~ Flange 2000;
+#X obj 694 817 dac~;
+#X obj 616 719 hsl 128 15 0 1 0 0 empty vol1 Volume -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 588 752 *~, f 7;
+#X obj 842 53 nbx 4 21 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#e4e4e4 #5a5a5a #5a5a5a 0 256;
+#X obj 842 91 osc~ 2.8;
+#X obj 842 139 expr~ ($v1 + 2) / 2;
+#X obj 842 281 *~, f 6;
+#X obj 904 186 hsl 128 15 1 40 0 0 empty width Width -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 904 212 pack 0 50;
+#X obj 904 246 line~;
+#X obj 842 396 +~;
+#X obj 904 302 hsl 128 15 1 5 0 0 empty delay Delay -2 -8 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 904 328 pack 0 50;
+#X obj 904 362 line~;
+#X obj 870 488 hsl 128 15 0 1 0 0 empty EFX EFX\ amount -2 -8 0 10
+#fcfcfc #000000 #000000 0 1;
+#X obj 842 584 *~, f 7;
+#X obj 842 430 delread4~ Flange;
+#X text 632 220 Flanger VST test;
+#X text 35 39 You should use this patch as a VST;
+#X obj 870 516 pack 0 50;
+#X obj 870 544 line~;
+#X obj 405 544 midi;
+#X obj 824 702 param 1, f 8;
+#X obj 990 127 param 2, f 8;
+#X obj 979 246 param 3, f 8;
+#X obj 979 423 param 4, f 8;
+#X obj 979 273 scale 0 1 1 5;
+#X obj 990 158 scale 0 1 1 40;
+#X obj 1027 379 tgl 25 0 empty empty empty 17 7 0 10 #e4e4e4 #828282
+#5a5a5a 0 1;
+#X obj 1081 248 tgl 25 0 empty empty empty 17 7 0 10 #e4e4e4 #828282
+#5a5a5a 0 1;
+#X obj 1073 71 tgl 25 0 empty empty empty 17 7 0 10 #e4e4e4 #828282
+#5a5a5a 0 1;
+#X connect 1 0 3 0;
+#X connect 2 0 3 1;
+#X connect 2 0 4 0;
+#X connect 7 0 8 0;
+#X connect 7 0 11 0;
+#X connect 10 0 11 1;
+#X connect 10 0 31 0;
+#X connect 11 0 9 0;
+#X connect 11 0 9 1;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 19 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 15 1;
+#X connect 19 0 25 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 19 1;
+#X connect 23 0 28 0;
+#X connect 24 0 9 0;
+#X connect 24 0 9 1;
+#X connect 24 0 8 0;
+#X connect 25 0 24 0;
+#X connect 28 0 29 0;
+#X connect 29 0 24 1;
+#X connect 31 0 10 0;
+#X connect 32 0 36 0;
+#X connect 33 0 35 0;
+#X connect 34 0 23 0;
+#X connect 35 0 20 0;
+#X connect 36 0 16 0;
+#X connect 37 0 34 1;
+#X connect 38 0 33 1;
+#X connect 39 0 32 1;
