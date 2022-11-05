@@ -1,0 +1,101 @@
+#N canvas 2681 -501 770 556 12;
+#X msg 551 365 \; pd dsp \$1;
+#X obj 554 342 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#N canvas 1008 606 720 210 r~ 0;
+#X obj 28 164 dac~, f 17;
+#X text 283 94 FDN-reverb \, check "EXTRA" in List of objects from
+Help menu.;
+#X obj 199 94 rev3~ 95 55;
+#X obj 28 21 catch~ l;
+#X obj 144 23 catch~ r;
+#X connect 2 0 0 0;
+#X connect 2 1 0 1;
+#X connect 3 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 0 1;
+#X connect 4 0 2 1;
+#X restore 581 341 pd r~;
+#X text 198 161 -----------------------------------------------------------
+;
+#X text 198 179 -----------------------------------------------------------
+;
+#N canvas 208 246 497 291 groupWork 0;
+#X text 208 129 Your turn!;
+#X restore 107 170 pd groupWork;
+#X text 79 171 2);
+#X text 81 231 3) Discussion;
+#X text 530 412 MCT4001 Pd Session 11 7 November 2022, f 21;
+#N canvas 3258 161 346 524 pitch_detect 0;
+#X obj 105 65 adc~;
+#X obj 105 122 *~;
+#X obj 172 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #00faff
+#000000 #000000 0 1;
+#X obj 172 157 pack 0 50;
+#X obj 172 181 line~;
+#X obj 105 209 hip~ 80;
+#X obj 105 233 hip~ 80;
+#X obj 105 257 lop~ 350;
+#X obj 105 281 lop~ 350;
+#X obj 105 329 mtof;
+#X obj 169 370 > 1;
+#X obj 105 433 gate;
+#X obj 105 457 print pitch;
+#X obj 105 305 sigmund~ -hop 4096 pitch;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 1;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 13 0;
+#X connect 9 0 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 1;
+#X connect 11 0 12 0;
+#X connect 13 0 9 0;
+#X restore 108 114 pd pitch_detect;
+#X text 82 114 1a);
+#X text 234 114 1b);
+#N canvas 733 369 804 825 env_detect 0;
+#X obj 105 65 adc~;
+#X obj 105 122 *~;
+#X obj 172 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #00faff
+#000000 #000000 0 1;
+#X obj 172 157 pack 0 50;
+#X obj 172 181 line~;
+#X obj 45 321 sigmund~ -hop 4096 env;
+#X floatatom 44 358 5 0 0 0 - - - 0;
+#X floatatom 250 398 8 0 0 0 - - - 0;
+#X text 317 398 <= the output is RMS amplitude which (for a sinusoid)
+is about 3 dB below peak-to-peak amplitude., f 53;
+#X obj 251 466 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
+;
+#X obj 250 433 - 100;
+#X text 365 346 - window size in samples (1024 default);
+#X text 365 364 - period in samples per analysis (window/2 default)
+;
+#X obj 44 464 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
+;
+#X obj 43 431 - 100;
+#X obj 250 354 env~ 4096;
+#X obj 36 676 pdcontrol;
+#X msg 36 649 browse http://msp.ucsd.edu/techniques/v0.11/book-html/node158.html
+, f 69;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 0 15 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 1;
+#X connect 5 0 6 0;
+#X connect 6 0 14 0;
+#X connect 7 0 10 0;
+#X connect 10 0 9 0;
+#X connect 14 0 13 0;
+#X connect 15 0 7 0;
+#X connect 17 0 16 0;
+#X restore 266 113 pd env_detect;
+#X connect 1 0 0 0;
