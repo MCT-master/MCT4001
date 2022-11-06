@@ -1,4 +1,21 @@
 <!doctype html>
+
+<!-- 
+HTML stands for Hyper Text Markup Language
+HTML is the standard markup language for creating Web pages
+HTML describes the structure of a Web page
+HTML consists of a series of elements
+HTML elements tell the browser how to display the content
+HTML elements label pieces of content such as "this is a heading", "this is a paragraph", "this is a link", etc. -->
+
+<!-- The <!DOCTYPE html> declaration defines that this document is an HTML5 document
+The <html> element is the root element of an HTML page
+The <head> element contains meta information about the HTML page
+The <title> element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
+The <body> element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.
+The <h1> element defines a large heading
+The <p> element defines a paragraph -->
+
 <html>
 
 <head>
@@ -14,14 +31,20 @@
 <body>
   <div id="loading">Loading ...</div>
 
-  <div id="des">"testProj" is a simple patch that runs on the browser via the WebPd framework.
-    <br />It generates sounds algorithmically using FM synthesis.<br />
-    <br />
-    NOTE: Use 'https' instead 'http'.
+  <div id="des">This is a simple patch that runs on the browser via the WebPd framework.
+    <br />The main sound synthesis is based on frequency modulation (FM) and control signals are generated
+    algorithmically.<br />
+
   </div>
   <div>
-    More info here: <a href="https://github.com/MCT-master/MCT4001" target="_blank">MCT4001</a>
+    Download the patch from <a href="https://github.com/MCT-master/MCT4001" target="_blank">MCT4001</a>
   </div>
+  <div>
+    <br />You can read some essentials of HTML <a href="info.html" target="_blank">here.</a><br />
+  </div>
+
+
+
   <br />
 
   <button id="startButton">Start!</button>
@@ -39,16 +62,14 @@
       webPdExamples.patchLoaded(mainStr)
     })
 
-    var context = null;
-    var midiAccess = null;
   </script>
   <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-68576315-1', 'auto');
     ga('send', 'pageview');
