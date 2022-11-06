@@ -1,6 +1,6 @@
-#N canvas 276 292 702 519 12;
-#X msg 551 365 \; pd dsp \$1;
-#X obj 554 342 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#N canvas 518 435 702 519 12;
+#X msg 537 374 \; pd dsp \$1;
+#X obj 540 351 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #N canvas 1008 606 720 210 r~ 0;
 #X obj 28 164 dac~, f 17;
@@ -15,18 +15,18 @@ Help menu.;
 #X connect 3 0 2 0;
 #X connect 4 0 0 1;
 #X connect 4 0 2 1;
-#X restore 581 341 pd r~;
-#X text 198 223 -----------------------------------------------------------
+#X restore 567 350 pd r~;
+#X text 197 225 -----------------------------------------------------------
 ;
-#X text 198 241 -----------------------------------------------------------
+#X text 197 243 -----------------------------------------------------------
 ;
 #N canvas 654 851 605 329 groupWork 0;
 #X text 102 97 a) Add more interactive controls to the WebPd patch
 \, such as the carrier frequency \, modulation amount \, etc.;
 #X text 102 154 b) Make a simple patch that loads a sample and automatize
 sound sytnthesis parameters via pitch and rhythm tracking.;
-#X restore 107 232 pd groupWork;
-#X text 530 412 MCT4001 Pd Session 11 7 November 2022, f 21;
+#X restore 106 234 pd groupWork;
+#X text 516 421 MCT4001 Pd Session 11 7 November 2022, f 21;
 #N canvas 2214 161 346 524 pitch_detect 0;
 #X obj 105 65 adc~;
 #X obj 105 122 *~;
@@ -99,13 +99,13 @@ is about 3 dB below peak-to-peak amplitude., f 53;
 #X connect 15 0 7 0;
 #X connect 17 0 16 0;
 #X restore 263 68 pd env_detect;
-#X text 77 181 3);
+#X text 76 183 3);
 #X text 77 128 2);
 #N canvas 121 146 450 300 WebPd 0;
 #X text 68 122 Open /Pd_Session11 folder on a text editor!;
-#X restore 106 182 pd WebPd;
-#X text 79 233 4);
-#X text 80 289 5) Discussion;
+#X restore 105 184 pd WebPd;
+#X text 78 235 4);
+#X text 79 291 5) Discussion;
 #X obj 106 128 normalize;
 #X obj 205 128 minimum;
 #X obj 294 129 maximum;
@@ -236,7 +236,6 @@ the incoming sound., f 47;
 #X connect 5 0 8 0;
 #X connect 9 0 4 0;
 #X restore 414 71 pd attack_detect;
-#X text 377 130 2b);
 #N canvas 614 331 1077 898 score_example 0;
 #X obj 154 48 metro 1000;
 #X obj 154 27 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
@@ -366,5 +365,94 @@ v2-base-pitch 72 \; v3-base-pitch 60 \; tempo 60 \; scale major-scale
 #X connect 32 0 2 0;
 #X connect 33 0 32 1;
 #X connect 34 0 32 1;
-#X restore 406 129 pd score_example;
+#X restore 117 364 pd score_example;
+#N canvas 563 159 1108 691 randomized_synth 0;
+#X obj 116 64 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 116 84 metro 5;
+#X obj 116 108 f;
+#X obj 152 110 + 1;
+#X obj 152 134 mod 32;
+#X obj 117 193 tabread wtable;
+#X obj 117 248 pack;
+#X floatatom 172 53 5 0 100 0 - - - 0;
+#X msg 117 272 \$1 \$2;
+#X obj 117 296 vline~;
+#X obj 230 225 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #00faff
+#000000 #000000 0 1;
+#X obj 230 361 pack 0 50;
+#X obj 230 385 line~;
+#X obj 120 393 *~;
+#X obj 113 427 throw~ l;
+#X obj 188 435 throw~ r;
+#X obj 373 88 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 374 160 expr $f1 * 2 - 1;
+#X floatatom 374 184 5 0 0 0 - - - 0;
+#X obj 374 207 tabwrite wtable;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array wtable 16 float 3;
+#A 0 0.638 -0.622 -0.35 0.372 0.552 0.312 -0.446 0.054 -0.1 0.612 0.922
+-0.492 -0.922 0.0940001 0.922 0.19;
+#X coords 0 1 16 -1 400 280 1 0 0;
+#X restore 641 43 graph;
+#X obj 372 58 spigot;
+#X obj 433 61 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 121 324 lop~ 2500;
+#X obj 532 181 random 32;
+#X obj 373 108 random 1000;
+#X obj 374 131 * 0.001;
+#X text 43 630 (adapted from Andrew Brown);
+#X text 378 511 delay time;
+#X floatatom 337 508 5 0 0 0 - - - 0;
+#X obj 700 372 vsl 15 128 0 1 0 0 empty empty Feedback\\\ gain 0 -9
+0 10 #9c00ff #000000 #000000 0 1;
+#X obj 697 531 pack 0 50;
+#X obj 697 555 line~;
+#X obj 597 469 *~;
+#X obj 337 420 delwrite~ glitch1 2000;
+#X obj 337 534 delread~ glitch1 250;
+#X obj 69 364 rev3~ 90 90 2000 30;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 21 0;
+#X connect 2 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 1;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 7 0 1 1;
+#X connect 7 0 6 1;
+#X connect 8 0 9 0;
+#X connect 9 0 23 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 1;
+#X connect 13 0 15 0;
+#X connect 13 0 14 0;
+#X connect 16 0 24 0;
+#X connect 16 0 25 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 21 0 16 0;
+#X connect 22 0 21 1;
+#X connect 23 0 34 0;
+#X connect 23 0 36 0;
+#X connect 24 0 19 1;
+#X connect 25 0 26 0;
+#X connect 26 0 17 0;
+#X connect 29 0 35 0;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 1;
+#X connect 33 0 34 0;
+#X connect 35 0 33 0;
+#X connect 35 0 13 0;
+#X connect 36 0 13 0;
+#X restore 283 365 pd randomized_synth;
+#X text 84 364 6a);
+#X text 253 364 6b);
+#X text 64 331 Extras:;
 #X connect 1 0 0 0;
