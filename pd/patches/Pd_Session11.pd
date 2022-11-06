@@ -20,11 +20,16 @@ Help menu.;
 ;
 #X text 197 243 -----------------------------------------------------------
 ;
-#N canvas 654 851 605 329 groupWork 0;
-#X text 102 97 a) Add more interactive controls to the WebPd patch
-\, such as the carrier frequency \, modulation amount \, etc.;
-#X text 102 154 b) Make a simple patch that loads a sample and automatize
-sound sytnthesis parameters via pitch and rhythm tracking.;
+#N canvas 654 851 601 347 groupWork 0;
+#X text 103 65 Work in teams:;
+#X text 124 99 A) Make a WebPd patch that combines the modules that
+you like the most in your individual projects.;
+#X text 124 151 B) Make a regular Pd patch that combines the modules
+that you like the most but this time using ptich & rhtyhm tracking
+to make them interact with each other.;
+#X text 124 218 C) Add more interactive controls to the WebPd patch
+(class example) \, such as the carrier frequency \, modulation amount
+\, etc.;
 #X restore 106 234 pd groupWork;
 #X text 516 421 MCT4001 Pd Session 11 7 November 2022, f 21;
 #N canvas 2214 161 346 524 pitch_detect 0;
