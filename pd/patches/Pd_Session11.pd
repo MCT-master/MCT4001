@@ -1,4 +1,4 @@
-#N canvas 518 435 702 519 12;
+#N canvas 373 1509 702 519 12;
 #X msg 537 374 \; pd dsp \$1;
 #X obj 540 351 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
@@ -20,19 +20,16 @@ Help menu.;
 ;
 #X text 197 243 -----------------------------------------------------------
 ;
-#N canvas 654 851 601 347 groupWork 0;
+#N canvas 108 184 1275 546 groupWork 1;
 #X text 103 65 Work in teams:;
 #X text 124 99 A) Make a WebPd patch that combines the modules that
 you like the most in your individual projects.;
-#X text 124 151 B) Make a regular Pd patch that combines the modules
-that you like the most but this time using ptich & rhtyhm tracking
-to make them interact with each other.;
-#X text 124 218 C) Add more interactive controls to the WebPd patch
+#X text 121 145 B) Add more interactive controls to the WebPd patch
 (class example) \, such as the carrier frequency \, modulation amount
 \, etc.;
 #X restore 106 234 pd groupWork;
 #X text 516 421 MCT4001 Pd Session 11 7 November 2022, f 21;
-#N canvas 2214 161 346 524 pitch_detect 0;
+#N canvas 550 255 742 526 pitch_detect 0;
 #X obj 105 65 adc~;
 #X obj 105 122 *~;
 #X obj 172 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #00faff
@@ -48,6 +45,14 @@ to make them interact with each other.;
 #X obj 105 433 gate;
 #X obj 105 457 print pitch;
 #X obj 105 305 sigmund~ -hop 4096 pitch;
+#X text 289 398 The hop size (number of samples between each successive
+FFT window) of Fast Fourier transforms performed is equal to the size
+of the Fast Fourier transform divided by the overlap factor (e.g. if
+the frame size is 512 and the overlap is set to 2 then the hop size
+is 256 samples).;
+#X text 293 306 The example below specifies a huge hop of 4096 (to
+slow the output down) and to output "pitch" and "env" (the default
+outputs).;
 #X connect 0 0 1 0;
 #X connect 1 0 5 0;
 #X connect 2 0 3 0;
@@ -65,7 +70,7 @@ to make them interact with each other.;
 #X restore 105 69 pd pitch_detect;
 #X text 79 69 1a);
 #X text 231 69 1b);
-#N canvas 733 369 804 825 env_detect 0;
+#N canvas 733 264 804 825 env_detect 0;
 #X obj 105 65 adc~;
 #X obj 105 122 *~;
 #X obj 172 21 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #00faff
